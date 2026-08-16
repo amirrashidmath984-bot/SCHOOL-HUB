@@ -1,0 +1,2939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Practice Center | SCHOOL HUB Vs Amexo</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+:root{
+    --primary:#2563eb;
+    --primary-dark:#1d4ed8;
+    --secondary:#7c3aed;
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --sidebar:#0f172a;
+    --success:#16a34a;
+    --danger:#dc2626;
+    --warning:#f59e0b;
+}
+
+body.dark{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:#334155;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    width:250px;
+    background:var(--sidebar);
+    color:white;
+    padding:24px 18px;
+    z-index:1000;
+    transition:.3s;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 8px 28px;
+}
+
+.brand-icon{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+    font-weight:900;
+}
+
+.brand-name{
+    font-weight:900;
+}
+
+.brand-name span{
+    color:#60a5fa;
+}
+
+.brand-name small{
+    display:block;
+    color:#94a3b8;
+    font-size:9px;
+    margin-top:3px;
+}
+
+.menu-title{
+    color:#64748b;
+    font-size:10px;
+    font-weight:800;
+    padding:0 12px;
+    margin:17px 0 8px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    margin:4px 0;
+    border-radius:9px;
+    text-decoration:none;
+    color:#cbd5e1;
+    font-size:13px;
+    font-weight:700;
+}
+
+.menu-item:hover,
+.menu-item.active{
+    background:#1e3a8a;
+    color:white;
+}
+
+.menu-item span{
+    width:22px;
+    text-align:center;
+}
+
+.logout{
+    position:absolute;
+    bottom:20px;
+    left:18px;
+    right:18px;
+    border-top:1px solid #334155;
+    padding-top:12px;
+}
+
+.logout button{
+    width:100%;
+    border:0;
+    background:none;
+    color:#f87171;
+    text-align:left;
+    padding:12px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:250px;
+    min-height:100vh;
+}
+
+.topbar{
+    height:72px;
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    position:sticky;
+    top:0;
+    z-index:500;
+}
+
+.mobile-menu{
+    display:none;
+    background:none;
+    border:0;
+    color:var(--text);
+    font-size:25px;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.theme-btn,
+.notification{
+    width:40px;
+    height:40px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--card);
+    color:var(--text);
+    cursor:pointer;
+}
+
+.user-mini{
+    display:flex;
+    align-items:center;
+    gap:9px;
+}
+
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+    font-weight:900;
+}
+
+.user-mini strong{
+    display:block;
+    font-size:13px;
+}
+
+.user-mini small{
+    color:var(--muted);
+    font-size:10px;
+}
+
+
+/* ================= CONTENT ================= */
+
+.content{
+    max-width:1250px;
+    margin:auto;
+    padding:30px;
+}
+
+.page-header{
+    margin-bottom:22px;
+}
+
+.page-header h1{
+    font-size:30px;
+    margin-bottom:7px;
+}
+
+.page-header p{
+    color:var(--muted);
+    font-size:13px;
+}
+
+
+/* ================= SETUP ================= */
+
+.setup{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:25px;
+}
+
+.setup-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.setup-title h2{
+    font-size:18px;
+}
+
+.setup-title span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+.setup-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+    gap:14px;
+}
+
+.field label{
+    display:block;
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:7px;
+    color:var(--muted);
+}
+
+.field select,
+.field input{
+    width:100%;
+    padding:12px;
+    border:1px solid var(--border);
+    border-radius:9px;
+    background:var(--bg);
+    color:var(--text);
+    outline:none;
+}
+
+.start-area{
+    margin-top:20px;
+    display:flex;
+    justify-content:flex-end;
+}
+
+.start-btn{
+    border:0;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    color:white;
+    padding:13px 25px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:900;
+}
+
+
+/* ================= INFO CARDS ================= */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+    gap:14px;
+    margin:20px 0;
+}
+
+.info-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:17px;
+}
+
+.info-card .icon{
+    font-size:22px;
+}
+
+.info-card strong{
+    display:block;
+    font-size:20px;
+    margin:7px 0;
+}
+
+.info-card small{
+    color:var(--muted);
+}
+
+
+/* ================= EXAM ================= */
+
+.exam{
+    display:none;
+}
+
+.exam-header{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:15px 18px;
+    margin-bottom:15px;
+}
+
+.exam-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.exam-name{
+    font-weight:900;
+}
+
+.exam-meta{
+    color:var(--muted);
+    font-size:10px;
+    margin-top:5px;
+}
+
+.timer{
+    min-width:120px;
+    text-align:center;
+    padding:9px 14px;
+    border-radius:9px;
+    background:var(--bg);
+    border:1px solid var(--border);
+}
+
+.timer small{
+    display:block;
+    color:var(--muted);
+    font-size:9px;
+}
+
+.timer strong{
+    color:var(--primary);
+    font-size:20px;
+}
+
+.timer.warning strong{
+    color:var(--danger);
+}
+
+
+/* PROGRESS */
+
+.progress{
+    margin-top:14px;
+}
+
+.progress-info{
+    display:flex;
+    justify-content:space-between;
+    font-size:10px;
+    color:var(--muted);
+    margin-bottom:6px;
+}
+
+.progress-bar{
+    height:7px;
+    border-radius:20px;
+    background:var(--border);
+    overflow:hidden;
+}
+
+.progress-fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(
+        90deg,
+        #2563eb,
+        #7c3aed
+    );
+}
+
+
+/* ================= EXAM GRID ================= */
+
+.exam-grid{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:18px;
+}
+
+
+/* NAVIGATOR */
+
+.navigator{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:15px;
+    padding:17px;
+    height:max-content;
+    position:sticky;
+    top:90px;
+}
+
+.navigator h3{
+    font-size:14px;
+    margin-bottom:14px;
+}
+
+.question-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(5,1fr);
+    gap:7px;
+}
+
+.q-btn{
+    height:32px;
+    border:1px solid var(--border);
+    background:var(--bg);
+    color:var(--muted);
+    border-radius:7px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:900;
+}
+
+.q-btn.current{
+    background:var(--primary);
+    border-color:var(--primary);
+    color:white;
+}
+
+.q-btn.answered{
+    border-color:#86efac;
+    background:#dcfce7;
+    color:#15803d;
+}
+
+.q-btn.review{
+    border-color:#fbbf24;
+    background:#fef3c7;
+    color:#92400e;
+}
+
+
+/* QUESTION */
+
+.question{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:30px;
+}
+
+.question-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.question-number{
+    color:var(--primary);
+    font-weight:900;
+    font-size:12px;
+}
+
+.question-actions{
+    display:flex;
+    gap:7px;
+}
+
+.small-btn{
+    border:1px solid var(--border);
+    background:var(--bg);
+    color:var(--text);
+    padding:8px 10px;
+    border-radius:7px;
+    cursor:pointer;
+    font-size:10px;
+    font-weight:800;
+}
+
+.small-btn.marked{
+    background:#fef3c7;
+    border-color:#fbbf24;
+}
+
+.question-text{
+    font-size:20px;
+    line-height:1.6;
+    margin-bottom:24px;
+    font-weight:700;
+}
+
+.options{
+    display:grid;
+    gap:11px;
+}
+
+.option{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    padding:15px;
+    width:100%;
+    border:1px solid var(--border);
+    border-radius:11px;
+    background:var(--card);
+    color:var(--text);
+    cursor:pointer;
+    text-align:left;
+}
+
+.option:hover{
+    border-color:var(--primary);
+}
+
+.option.selected{
+    border-color:var(--primary);
+    background:#dbeafe;
+}
+
+body.dark .option.selected{
+    background:#172554;
+}
+
+.letter{
+    width:32px;
+    height:32px;
+    min-width:32px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border:1px solid var(--border);
+    font-weight:900;
+}
+
+.option.selected .letter{
+    background:var(--primary);
+    color:white;
+    border-color:var(--primary);
+}
+
+
+/* CONTROLS */
+
+.controls{
+    border-top:1px solid var(--border);
+    margin-top:25px;
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+}
+
+.control{
+    border:0;
+    padding:12px 18px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:900;
+}
+
+.prev{
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+}
+
+.next{
+    background:var(--primary);
+    color:white;
+}
+
+.submit{
+    background:var(--success);
+    color:white;
+}
+
+
+/* ================= RESULT ================= */
+
+.result{
+    display:none;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:35px;
+}
+
+.result-header{
+    text-align:center;
+}
+
+.result-icon{
+    font-size:55px;
+}
+
+.result-header h2{
+    margin:10px 0 5px;
+}
+
+.result-header p{
+    color:var(--muted);
+}
+
+.score{
+    font-size:55px;
+    font-weight:900;
+    color:var(--primary);
+    margin:15px 0;
+}
+
+.result-grid{
+    max-width:700px;
+    margin:20px auto;
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+    gap:10px;
+}
+
+.result-stat{
+    background:var(--bg);
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+}
+
+.result-stat strong{
+    display:block;
+    font-size:22px;
+}
+
+.result-stat small{
+    color:var(--muted);
+}
+
+.performance{
+    max-width:700px;
+    margin:25px auto;
+}
+
+.performance h3{
+    margin-bottom:10px;
+}
+
+.performance-row{
+    margin:12px 0;
+}
+
+.performance-label{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    margin-bottom:5px;
+}
+
+.performance-bar{
+    height:8px;
+    background:var(--border);
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.performance-fill{
+    height:100%;
+    background:var(--primary);
+}
+
+.result-actions{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:25px;
+}
+
+.result-btn{
+    border:0;
+    padding:12px 18px;
+    border-radius:9px;
+    cursor:pointer;
+    font-weight:900;
+}
+
+.retry{
+    background:var(--primary);
+    color:white;
+}
+
+.wrong-retry{
+    background:var(--danger);
+    color:white;
+}
+
+.review-btn{
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+}
+
+
+/* ================= REVIEW ================= */
+
+.review-area{
+    display:none;
+    margin-top:25px;
+}
+
+.review-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:12px;
+}
+
+.review-card.correct{
+    border-left:5px solid var(--success);
+}
+
+.review-card.wrong{
+    border-left:5px solid var(--danger);
+}
+
+.review-card h4{
+    margin-bottom:10px;
+}
+
+.review-answer{
+    font-size:12px;
+    margin:5px 0;
+}
+
+.explanation{
+    background:var(--bg);
+    padding:12px;
+    border-radius:8px;
+    margin-top:10px;
+    font-size:11px;
+    color:var(--muted);
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1050px){
+
+    .setup-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .info-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:900px){
+
+    .sidebar{
+        left:-250px;
+    }
+
+    .sidebar.open{
+        left:0;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .exam-grid{
+        grid-template-columns:1fr;
+    }
+
+    .navigator{
+        position:static;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .content{
+        padding:18px 12px;
+    }
+
+    .setup-grid{
+        grid-template-columns:1fr;
+    }
+
+    .info-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .question{
+        padding:20px 15px;
+    }
+
+    .question-text{
+        font-size:17px;
+    }
+
+    .exam-top{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+
+    .timer{
+        width:100%;
+    }
+
+    .result-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .user-mini div{
+        display:none;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar" id="sidebar">
+
+<div class="brand">
+
+<div class="brand-icon">SH</div>
+
+<div class="brand-name">
+SCHOOL <span>HUB</span>
+<small>Vs Amexo</small>
+</div>
+
+</div>
+
+
+<div class="menu-title">
+MAIN MENU
+</div>
+
+<a href="dashboard.html" class="menu-item">
+<span>🏠</span>
+Dashboard
+</a>
+
+<a href="courses.html" class="menu-item">
+<span>📚</span>
+My Courses
+</a>
+
+<a href="practice.html" class="menu-item active">
+<span>📝</span>
+Practice
+</a>
+
+<a href="notes.html" class="menu-item">
+<span>📖</span>
+Notes
+</a>
+
+
+<div class="menu-title">
+RESOURCES
+</div>
+
+<a href="library.html" class="menu-item">
+<span>📄</span>
+Digital Library
+</a>
+
+<a href="entrance.html" class="menu-item">
+<span>🎯</span>
+Entrance Exam
+</a>
+
+<a href="leaderboard.html" class="menu-item">
+<span>🏆</span>
+Leaderboard
+</a>
+
+
+<div class="menu-title">
+ACCOUNT
+</div>
+
+<a href="settings.html" class="menu-item">
+<span>⚙️</span>
+Settings
+</a>
+
+
+<div class="logout">
+
+<button onclick="logout()">
+🚪 &nbsp; Logout
+</button>
+
+</div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+
+<header class="topbar">
+
+<button
+class="mobile-menu"
+onclick="toggleSidebar()">
+☰
+</button>
+
+<div></div>
+
+<div class="top-actions">
+
+<button
+class="theme-btn"
+id="themeBtn"
+onclick="toggleTheme()">
+🌙
+</button>
+
+<button class="notification">
+🔔
+</button>
+
+<div class="user-mini">
+
+<div class="avatar" id="avatar">
+S
+</div>
+
+<div>
+
+<strong id="userName">
+Student
+</strong>
+
+<small>
+Student
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+
+<main class="content">
+
+
+<!-- ================= HEADER ================= -->
+
+<section class="page-header">
+
+<h1>
+Practice Center 🎯
+</h1>
+
+<p>
+Build your knowledge, practice difficult questions
+and prepare for the Ethiopian Entrance Exam.
+</p>
+
+</section>
+
+
+<!-- ================= SETUP ================= -->
+
+<section
+class="setup"
+id="setup">
+
+<div class="setup-title">
+
+<h2>
+Create Your Practice Test
+</h2>
+
+<span>
+Choose your preferred settings
+</span>
+
+</div>
+
+
+<div class="setup-grid">
+
+
+<div class="field">
+
+<label>
+SUBJECT
+</label>
+
+<select id="subject">
+
+<option value="all">
+All Subjects
+</option>
+
+<option value="Mathematics">
+Mathematics
+</option>
+
+<option value="Physics">
+Physics
+</option>
+
+<option value="Chemistry">
+Chemistry
+</option>
+
+<option value="Biology">
+Biology
+</option>
+
+<option value="English">
+English
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+GRADE
+</label>
+
+<select id="grade">
+
+<option value="all">
+Grade 9–12
+</option>
+
+<option value="9">
+Grade 9
+</option>
+
+<option value="10">
+Grade 10
+</option>
+
+<option value="11">
+Grade 11
+</option>
+
+<option value="12">
+Grade 12
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+DIFFICULTY
+</label>
+
+<select id="difficulty">
+
+<option value="all">
+Mixed
+</option>
+
+<option value="Easy">
+Easy
+</option>
+
+<option value="Medium">
+Medium
+</option>
+
+<option value="Hard">
+Hard
+</option>
+
+<option value="Entrance">
+Entrance Exam
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+QUESTIONS
+</label>
+
+<select id="questionCountSelect">
+
+<option value="10">
+10 Questions
+</option>
+
+<option value="20">
+20 Questions
+</option>
+
+<option value="30">
+30 Questions
+</option>
+
+<option value="50">
+50 Questions
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+TIME LIMIT
+</label>
+
+<select id="timeLimit">
+
+<option value="10">
+10 Minutes
+</option>
+
+<option value="20">
+20 Minutes
+</option>
+
+<option value="30">
+30 Minutes
+</option>
+
+<option value="60">
+60 Minutes
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+QUESTION ORDER
+</label>
+
+<select id="questionOrder">
+
+<option value="random">
+Random
+</option>
+
+<option value="normal">
+Normal
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+NEGATIVE MARKING
+</label>
+
+<select id="negativeMarking">
+
+<option value="no">
+No
+</option>
+
+<option value="yes">
+Yes (-0.25)
+</option>
+
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+SHOW EXPLANATIONS
+</label>
+
+<select id="showExplanation">
+
+<option value="yes">
+Yes
+</option>
+
+<option value="no">
+No
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<div class="start-area">
+
+<button
+class="start-btn"
+onclick="startPractice()">
+
+🚀 Start Practice
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= INFO ================= -->
+
+<section class="info-grid">
+
+<div class="info-card">
+
+<div class="icon">📚</div>
+
+<strong id="totalBank">
+0
+</strong>
+
+<small>
+Questions Available
+</small>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="icon">🏆</div>
+
+<strong id="bestScore">
+0%
+</strong>
+
+<small>
+Best Score
+</small>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="icon">📝</div>
+
+<strong id="testsTaken">
+0
+</strong>
+
+<small>
+Tests Completed
+</small>
+
+</div>
+
+
+<div class="info-card">
+
+<div class="icon">🎯</div>
+
+<strong id="accuracy">
+0%
+</strong>
+
+<small>
+Overall Accuracy
+</small>
+
+</div>
+
+</section>
+
+
+<!-- ================= EXAM ================= -->
+
+<section
+class="exam"
+id="exam">
+
+
+<div class="exam-header">
+
+<div class="exam-top">
+
+<div>
+
+<div
+class="exam-name"
+id="examName">
+Practice Test
+</div>
+
+<div
+class="exam-meta"
+id="examMeta">
+10 Questions
+</div>
+
+</div>
+
+
+<div
+class="timer"
+id="timerBox">
+
+<small>
+TIME REMAINING
+</small>
+
+<strong id="timer">
+00:00
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="progress">
+
+<div class="progress-info">
+
+<span id="progressText">
+Question 1 of 10
+</span>
+
+<span id="progressPercent">
+0%
+</span>
+
+</div>
+
+<div class="progress-bar">
+
+<div
+class="progress-fill"
+id="progressFill">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="exam-grid">
+
+
+<!-- NAVIGATOR -->
+
+<aside class="navigator">
+
+<h3>
+Question Navigator
+</h3>
+
+<div
+class="question-grid"
+id="questionGrid">
+</div>
+
+</aside>
+
+
+<!-- QUESTION -->
+
+<section class="question">
+
+<div class="question-head">
+
+<span
+class="question-number"
+id="questionNumber">
+QUESTION 1
+</span>
+
+
+<div class="question-actions">
+
+<button
+class="small-btn"
+id="markBtn"
+onclick="toggleReview()">
+
+🚩 Mark
+
+</button>
+
+<button
+class="small-btn"
+onclick="clearAnswer()">
+
+✕ Clear
+
+</button>
+
+</div>
+
+</div>
+
+
+<div
+class="question-text"
+id="questionText">
+</div>
+
+
+<div
+class="options"
+id="options">
+</div>
+
+
+<div class="controls">
+
+<button
+class="control prev"
+onclick="previousQuestion()">
+
+← Previous
+
+</button>
+
+
+<button
+class="control next"
+id="nextButton"
+onclick="nextQuestion()">
+
+Next →
+
+</button>
+
+
+<button
+class="control submit"
+id="submitButton"
+onclick="submitTest()"
+style="display:none">
+
+✓ Submit Test
+
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+</section>
+
+
+<!-- ================= RESULT ================= -->
+
+<section
+class="result"
+id="result">
+
+
+<div class="result-header">
+
+<div class="result-icon">
+🏆
+</div>
+
+<h2>
+Practice Completed!
+</h2>
+
+<p id="resultMessage">
+Excellent work.
+</p>
+
+<div
+class="score"
+id="finalScore">
+0%
+</div>
+
+</div>
+
+
+<div class="result-grid">
+
+<div class="result-stat">
+
+<strong id="correct">
+0
+</strong>
+
+<small>
+Correct
+</small>
+
+</div>
+
+
+<div class="result-stat">
+
+<strong id="wrong">
+0
+</strong>
+
+<small>
+Wrong
+</small>
+
+</div>
+
+
+<div class="result-stat">
+
+<strong id="unanswered">
+0
+</strong>
+
+<small>
+Unanswered
+</small>
+
+</div>
+
+
+<div class="result-stat">
+
+<strong id="earned">
+0
+</strong>
+
+<small>
+Points
+</small>
+
+</div>
+
+</div>
+
+
+<div class="performance">
+
+<h3>
+Performance Analysis
+</h3>
+
+
+<div class="performance-row">
+
+<div class="performance-label">
+
+<span>
+Accuracy
+</span>
+
+<strong id="accuracyResult">
+0%
+</strong>
+
+</div>
+
+<div class="performance-bar">
+
+<div
+class="performance-fill"
+id="accuracyFill">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="performance-row">
+
+<div class="performance-label">
+
+<span>
+Completion
+</span>
+
+<strong id="completionResult">
+0%
+</strong>
+
+</div>
+
+<div class="performance-bar">
+
+<div
+class="performance-fill"
+id="completionFill">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="result-actions">
+
+<button
+class="result-btn retry"
+onclick="restartPractice()">
+
+🔄 Try Again
+
+</button>
+
+<button
+class="result-btn wrong-retry"
+onclick="retryWrong()">
+
+❌ Retry Wrong
+
+</button>
+
+<button
+class="result-btn review-btn"
+onclick="showReview()">
+
+📖 Review Answers
+
+</button>
+
+</div>
+
+
+<div
+class="review-area"
+id="reviewArea">
+</div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   USER
+===================================================== */
+
+const currentUser =
+JSON.parse(
+localStorage.getItem(
+"schoolHubCurrentUser"
+)
+);
+
+if(!currentUser){
+
+window.location.href =
+"login.html";
+
+}
+
+
+/* =====================================================
+   QUESTION BANK
+===================================================== */
+
+const questionBank = [
+
+{
+subject:"Mathematics",
+grade:"10",
+difficulty:"Medium",
+question:"If f(x) = 2x + 3, what is f(5)?",
+options:["8","10","13","15"],
+answer:2,
+explanation:
+"Substitute x = 5: f(5) = 2(5)+3 = 13."
+},
+
+{
+subject:"Mathematics",
+grade:"12",
+difficulty:"Entrance",
+question:"If log₂(x) = 5, what is the value of x?",
+options:["10","16","25","32"],
+answer:3,
+explanation:
+"By the definition of logarithm, x = 2⁵ = 32."
+},
+
+{
+subject:"Mathematics",
+grade:"12",
+difficulty:"Hard",
+question:"If x² - 5x + 6 = 0, what is the sum of the roots?",
+options:["2","3","5","6"],
+answer:2,
+explanation:
+"For ax²+bx+c=0, sum of roots = -b/a. Therefore 5."
+},
+
+{
+subject:"Mathematics",
+grade:"11",
+difficulty:"Medium",
+question:"What is the derivative of x³?",
+options:["x²","2x","3x²","3x"],
+answer:2,
+explanation:
+"Using d(xⁿ)/dx = nxⁿ⁻¹, the derivative of x³ is 3x²."
+},
+
+{
+subject:"Physics",
+grade:"10",
+difficulty:"Easy",
+question:"What is the SI unit of work?",
+options:["Newton","Watt","Joule","Pascal"],
+answer:2,
+explanation:
+"The SI unit of work is the joule (J)."
+},
+
+{
+subject:"Physics",
+grade:"10",
+difficulty:"Medium",
+question:"A car travels 120 km in 2 hours. What is its average speed?",
+options:[
+"40 km/h",
+"50 km/h",
+"60 km/h",
+"80 km/h"
+],
+answer:2,
+explanation:
+"Average speed = distance/time = 120/2 = 60 km/h."
+},
+
+{
+subject:"Physics",
+grade:"12",
+difficulty:"Entrance",
+question:"If the velocity of an object doubles, its kinetic energy becomes:",
+options:[
+"Two times",
+"Three times",
+"Four times",
+"Half"
+],
+answer:2,
+explanation:
+"Kinetic energy is proportional to v². Doubling velocity makes KE four times larger."
+},
+
+{
+subject:"Chemistry",
+grade:"10",
+difficulty:"Easy",
+question:"Which particle determines the atomic number?",
+options:[
+"Electron",
+"Neutron",
+"Proton",
+"Nucleus"
+],
+answer:2,
+explanation:
+"Atomic number equals the number of protons in the nucleus."
+},
+
+{
+subject:"Chemistry",
+grade:"10",
+difficulty:"Medium",
+question:"What is the oxidation number of oxygen in most compounds?",
+options:[
+"+1",
+"-1",
+"-2",
+"+2"
+],
+answer:2,
+explanation:
+"Oxygen normally has oxidation number -2."
+},
+
+{
+subject:"Chemistry",
+grade:"11",
+difficulty:"Entrance",
+question:"Which equation is correctly balanced?",
+options:[
+"H₂ + O₂ → H₂O",
+"2H₂ + O₂ → 2H₂O",
+"H₂ + 2O₂ → H₂O",
+"2H₂ + 2O₂ → H₂O"
+],
+answer:1,
+explanation:
+"There are four hydrogen atoms and two oxygen atoms on both sides."
+},
+
+{
+subject:"Biology",
+grade:"10",
+difficulty:"Easy",
+question:"Which organelle is mainly responsible for cellular respiration?",
+options:[
+"Ribosome",
+"Nucleus",
+"Mitochondrion",
+"Chloroplast"
+],
+answer:2,
+explanation:
+"Mitochondria are the main sites of aerobic cellular respiration."
+},
+
+{
+subject:"Biology",
+grade:"10",
+difficulty:"Medium",
+question:"Which molecule carries genetic information in most living organisms?",
+options:[
+"ATP",
+"DNA",
+"Glucose",
+"Protein"
+],
+answer:1,
+explanation:
+"DNA stores hereditary genetic information."
+},
+
+{
+subject:"Biology",
+grade:"12",
+difficulty:"Entrance",
+question:"During photosynthesis, oxygen is mainly released from:",
+options:[
+"Carbon dioxide",
+"Glucose",
+"Water",
+"Chlorophyll"
+],
+answer:2,
+explanation:
+"The oxygen released during photosynthesis comes from the splitting of water molecules."
+},
+
+{
+subject:"English",
+grade:"12",
+difficulty:"Medium",
+question:"Choose the correct sentence.",
+options:[
+"He go to school.",
+"He going to school.",
+"He goes to school.",
+"He gone to school."
+],
+answer:2,
+explanation:
+"With the third-person singular subject 'he', the present simple verb takes -s."
+},
+
+{
+subject:"English",
+grade:"11",
+difficulty:"Medium",
+question:"Choose the synonym of 'rapid'.",
+options:[
+"Slow",
+"Quick",
+"Weak",
+"Late"
+],
+answer:1,
+explanation:
+"Rapid means very fast or quick."
+},
+
+{
+subject:"English",
+grade:"12",
+difficulty:"Entrance",
+question:"If I had studied harder, I _____ the examination.",
+options:[
+"pass",
+"will pass",
+"would have passed",
+"passed"
+],
+answer:2,
+explanation:
+"This is a third conditional sentence: If + past perfect, would have + past participle."
+}
+
+];
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+let examQuestions=[];
+
+let currentIndex=0;
+
+let answers=[];
+
+let reviewMarks=[];
+
+let timerInterval=null;
+
+let timeLeft=0;
+
+let negative=false;
+
+let explanationEnabled=true;
+
+
+/* =====================================================
+   USER DISPLAY
+===================================================== */
+
+if(currentUser){
+
+const name =
+currentUser.name ||
+"Student";
+
+document.getElementById(
+"userName"
+).textContent=name;
+
+document.getElementById(
+"avatar"
+).textContent=
+name
+.split(" ")
+.map(x=>x[0])
+.join("")
+.substring(0,2)
+.toUpperCase();
+
+}
+
+
+/* =====================================================
+   STATISTICS
+===================================================== */
+
+function updateDashboardStats(){
+
+document.getElementById(
+"totalBank"
+).textContent=
+questionBank.length;
+
+
+const history=
+JSON.parse(
+localStorage.getItem(
+"schoolHubPracticeHistory"
+)
+)||[];
+
+
+document.getElementById(
+"testsTaken"
+).textContent=
+history.length;
+
+
+if(history.length){
+
+const best=
+Math.max(
+...history.map(x=>x.score)
+);
+
+document.getElementById(
+"bestScore"
+).textContent=
+best+"%";
+
+
+const totalCorrect=
+history.reduce(
+(sum,x)=>sum+x.correct,
+0
+);
+
+const totalQuestions=
+history.reduce(
+(sum,x)=>sum+x.total,
+0
+);
+
+const acc=
+totalQuestions
+? Math.round(
+(totalCorrect/
+totalQuestions)*100
+)
+:0;
+
+document.getElementById(
+"accuracy"
+).textContent=
+acc+"%";
+
+}
+
+}
+
+updateDashboardStats();
+
+
+/* =====================================================
+   START
+===================================================== */
+
+function startPractice(){
+
+const subject=
+document.getElementById(
+"subject"
+).value;
+
+const grade=
+document.getElementById(
+"grade"
+).value;
+
+const difficulty=
+document.getElementById(
+"difficulty"
+).value;
+
+const count=
+Number(
+document.getElementById(
+"questionCountSelect"
+).value
+);
+
+const minutes=
+Number(
+document.getElementById(
+"timeLimit"
+).value
+);
+
+const order=
+document.getElementById(
+"questionOrder"
+).value;
+
+negative=
+document.getElementById(
+"negativeMarking"
+).value
+==="yes";
+
+explanationEnabled=
+document.getElementById(
+"showExplanation"
+).value
+==="yes";
+
+
+let filtered=
+questionBank.filter(q=>{
+
+const subjectOK=
+subject==="all" ||
+q.subject===subject;
+
+const gradeOK=
+grade==="all" ||
+q.grade===grade;
+
+const difficultyOK=
+difficulty==="all" ||
+q.difficulty===difficulty;
+
+return(
+subjectOK &&
+gradeOK &&
+difficultyOK
+);
+
+});
+
+
+if(!filtered.length){
+
+alert(
+"No questions match your selected settings."
+);
+
+return;
+
+}
+
+
+if(order==="random"){
+
+filtered.sort(
+()=>Math.random()-0.5
+);
+
+}
+
+
+examQuestions=
+filtered.slice(
+0,
+Math.min(
+count,
+filtered.length
+)
+);
+
+
+answers=
+new Array(
+examQuestions.length
+).fill(null);
+
+reviewMarks=
+new Array(
+examQuestions.length
+).fill(false);
+
+currentIndex=0;
+
+timeLeft=
+minutes*60;
+
+
+document.getElementById(
+"setup"
+).style.display=
+"none";
+
+document.querySelector(
+".info-grid"
+).style.display=
+"none";
+
+document.getElementById(
+"exam"
+).style.display=
+"block";
+
+document.getElementById(
+"result"
+).style.display=
+"none";
+
+
+document.getElementById(
+"examName"
+).textContent=
+`${subject==="all"?"Mixed":subject} Practice`;
+
+document.getElementById(
+"examMeta"
+).textContent=
+`${examQuestions.length} Questions • ${minutes} Minutes`;
+
+
+renderNavigator();
+renderQuestion();
+startTimer();
+
+}
+
+
+/* =====================================================
+   NAVIGATOR
+===================================================== */
+
+function renderNavigator(){
+
+const grid=
+document.getElementById(
+"questionGrid"
+);
+
+grid.innerHTML="";
+
+
+examQuestions.forEach(
+(_,i)=>{
+
+const btn=
+document.createElement(
+"button"
+);
+
+btn.className=
+"q-btn";
+
+btn.textContent=
+i+1;
+
+btn.onclick=()=>{
+
+currentIndex=i;
+
+renderQuestion();
+
+};
+
+grid.appendChild(btn);
+
+});
+
+updateNavigator();
+
+}
+
+
+function updateNavigator(){
+
+const buttons=
+document.querySelectorAll(
+".q-btn"
+);
+
+buttons.forEach(
+(btn,i)=>{
+
+btn.classList.remove(
+"current",
+"answered",
+"review"
+);
+
+if(i===currentIndex){
+
+btn.classList.add(
+"current"
+);
+
+}
+
+if(
+answers[i]!==null
+){
+
+btn.classList.add(
+"answered"
+);
+
+}
+
+if(
+reviewMarks[i]
+){
+
+btn.classList.add(
+"review"
+);
+
+}
+
+});
+
+}
+
+
+/* =====================================================
+   RENDER QUESTION
+===================================================== */
+
+function renderQuestion(){
+
+const q=
+examQuestions[currentIndex];
+
+
+document.getElementById(
+"questionNumber"
+).textContent=
+`QUESTION ${currentIndex+1}`;
+
+
+document.getElementById(
+"questionText"
+).textContent=
+q.question;
+
+
+const options=
+document.getElementById(
+"options"
+);
+
+options.innerHTML="";
+
+
+q.options.forEach(
+(option,index)=>{
+
+const btn=
+document.createElement(
+"button"
+);
+
+btn.className=
+"option";
+
+
+if(
+answers[currentIndex]
+===index
+){
+
+btn.classList.add(
+"selected"
+);
+
+}
+
+
+btn.innerHTML=`
+
+<span class="letter">
+${String.fromCharCode(65+index)}
+</span>
+
+<span>
+${option}
+</span>
+
+`;
+
+
+btn.onclick=()=>{
+
+answers[currentIndex]=
+index;
+
+renderQuestion();
+
+};
+
+
+options.appendChild(btn);
+
+});
+
+
+const markBtn=
+document.getElementById(
+"markBtn"
+);
+
+markBtn.classList.toggle(
+"marked",
+reviewMarks[currentIndex]
+);
+
+markBtn.innerHTML=
+reviewMarks[currentIndex]
+? "🚩 Marked"
+: "🚩 Mark";
+
+
+document.getElementById(
+"nextButton"
+).style.display=
+currentIndex===
+examQuestions.length-1
+? "none"
+: "block";
+
+
+document.getElementById(
+"submitButton"
+).style.display=
+currentIndex===
+examQuestions.length-1
+? "block"
+: "none";
+
+
+updateProgress();
+
+updateNavigator();
+
+saveProgress();
+
+}
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+function updateProgress(){
+
+const answered=
+answers.filter(
+x=>x!==null
+).length;
+
+
+const percent=
+Math.round(
+(answered/
+examQuestions.length)*100
+);
+
+
+document.getElementById(
+"progressText"
+).textContent=
+`Question ${currentIndex+1} of ${examQuestions.length}`;
+
+
+document.getElementById(
+"progressPercent"
+).textContent=
+percent+"%";
+
+
+document.getElementById(
+"progressFill"
+).style.width=
+percent+"%";
+
+}
+
+
+/* =====================================================
+   NEXT / PREVIOUS
+===================================================== */
+
+function nextQuestion(){
+
+if(
+currentIndex<
+examQuestions.length-1
+){
+
+currentIndex++;
+
+renderQuestion();
+
+}
+
+}
+
+
+function previousQuestion(){
+
+if(
+currentIndex>0
+){
+
+currentIndex--;
+
+renderQuestion();
+
+}
+
+}
+
+
+/* =====================================================
+   REVIEW MARK
+===================================================== */
+
+function toggleReview(){
+
+reviewMarks[currentIndex]=
+!reviewMarks[currentIndex];
+
+renderQuestion();
+
+}
+
+
+/* =====================================================
+   CLEAR ANSWER
+===================================================== */
+
+function clearAnswer(){
+
+answers[currentIndex]=
+null;
+
+renderQuestion();
+
+}
+
+
+/* =====================================================
+   TIMER
+===================================================== */
+
+function startTimer(){
+
+clearInterval(
+timerInterval
+);
+
+updateTimer();
+
+
+timerInterval=
+setInterval(()=>{
+
+timeLeft--;
+
+updateTimer();
+
+
+if(
+timeLeft<=0
+){
+
+clearInterval(
+timerInterval
+);
+
+alert(
+"Time is over. Your test will be submitted."
+);
+
+submitTest();
+
+}
+
+},1000);
+
+}
+
+
+function updateTimer(){
+
+const minutes=
+Math.floor(
+timeLeft/60
+);
+
+const seconds=
+timeLeft%60;
+
+
+document.getElementById(
+"timer"
+).textContent=
+`${String(minutes).padStart(2,"0")}:${String(seconds).padStart(2,"0")}`;
+
+
+const box=
+document.getElementById(
+"timerBox"
+);
+
+box.classList.toggle(
+"warning",
+timeLeft<=60
+);
+
+}
+
+
+/* =====================================================
+   AUTO SAVE
+===================================================== */
+
+function saveProgress(){
+
+localStorage.setItem(
+"schoolHubPracticeProgress",
+JSON.stringify({
+
+questions:examQuestions,
+
+answers:answers,
+
+reviewMarks:reviewMarks,
+
+currentIndex:currentIndex,
+
+timeLeft:timeLeft
+
+})
+);
+
+}
+
+
+/* =====================================================
+   SUBMIT
+===================================================== */
+
+function submitTest(){
+
+clearInterval(
+timerInterval
+);
+
+
+let correct=0;
+let wrong=0;
+let unanswered=0;
+let points=0;
+
+
+examQuestions.forEach(
+(q,i)=>{
+
+if(
+answers[i]===null
+){
+
+unanswered++;
+
+}else if(
+answers[i]===q.answer
+){
+
+correct++;
+
+points++;
+
+}else{
+
+wrong++;
+
+if(negative){
+
+points-=0.25;
+
+}
+
+}
+
+});
+
+
+const score=
+Math.max(
+0,
+Math.round(
+(points/
+examQuestions.length)*100
+)
+);
+
+
+showResult(
+correct,
+wrong,
+unanswered,
+points,
+score
+);
+
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+function showResult(
+correct,
+wrong,
+unanswered,
+points,
+score
+){
+
+document.getElementById(
+"exam"
+).style.display=
+"none";
+
+document.getElementById(
+"result"
+).style.display=
+"block";
+
+
+document.getElementById(
+"finalScore"
+).textContent=
+score+"%";
+
+
+document.getElementById(
+"correct"
+).textContent=
+correct;
+
+
+document.getElementById(
+"wrong"
+).textContent=
+wrong;
+
+
+document.getElementById(
+"unanswered"
+).textContent=
+unanswered;
+
+
+document.getElementById(
+"earned"
+).textContent=
+points;
+
+
+const completion=
+Math.round(
+((correct+wrong)/
+examQuestions.length)*100
+);
+
+
+document.getElementById(
+"accuracyResult"
+).textContent=
+score+"%";
+
+document.getElementById(
+"accuracyFill"
+).style.width=
+score+"%";
+
+
+document.getElementById(
+"completionResult"
+).textContent=
+completion+"%";
+
+document.getElementById(
+"completionFill"
+).style.width=
+completion+"%";
+
+
+let message="Keep practicing!";
+
+if(score>=90){
+
+message=
+"Outstanding! You are performing at an excellent level. 🔥";
+
+}else if(score>=75){
+
+message=
+"Great performance! Keep pushing toward mastery. 💪";
+
+}else if(score>=50){
+
+message=
+"Good attempt. Review your mistakes and try again. 📚";
+
+}
+
+
+document.getElementById(
+"resultMessage"
+).textContent=
+message;
+
+
+saveHistory(
+correct,
+wrong,
+unanswered,
+points,
+score
+);
+
+
+localStorage.removeItem(
+"schoolHubPracticeProgress"
+);
+
+}
+
+
+/* =====================================================
+   SAVE HISTORY
+===================================================== */
+
+function saveHistory(
+correct,
+wrong,
+unanswered,
+points,
+score
+){
+
+const history=
+JSON.parse(
+localStorage.getItem(
+"schoolHubPracticeHistory"
+)
+)||[];
+
+
+history.push({
+
+user:
+currentUser.email ||
+currentUser.name ||
+"student",
+
+subject:

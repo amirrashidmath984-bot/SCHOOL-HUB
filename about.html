@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SCHOOL HUB | About</title>
+
+<style>
+:root{
+    --primary:#4f46e5;
+    --secondary:#7c3aed;
+    --bg:#f5f7fb;
+    --card:#ffffff;
+    --text:#111827;
+    --muted:#6b7280;
+    --border:#e5e7eb;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+}
+
+.header{
+    height:70px;
+    background:white;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 24px;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo-box{
+    width:43px;
+    height:43px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-weight:900;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+}
+
+.logo small{
+    display:block;
+    color:var(--muted);
+    font-size:10px;
+    margin-top:3px;
+}
+
+.home{
+    border:0;
+    background:#eef2ff;
+    color:var(--primary);
+    padding:10px 14px;
+    border-radius:10px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.container{
+    width:min(1050px,94%);
+    margin:35px auto 60px;
+}
+
+
+/* HERO */
+
+.hero{
+    background:linear-gradient(
+        135deg,
+        #eef2ff,
+        #f5f3ff
+    );
+    border:1px solid #ddd6fe;
+    border-radius:25px;
+    padding:45px 25px;
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+    background:white;
+    color:var(--primary);
+    padding:7px 14px;
+    border-radius:20px;
+    font-size:11px;
+    font-weight:900;
+}
+
+.hero h1{
+    font-size:40px;
+    margin-top:14px;
+}
+
+.hero p{
+    max-width:700px;
+    margin:12px auto 0;
+    color:var(--muted);
+    line-height:1.7;
+}
+
+
+/* SECTIONS */
+
+.section{
+    margin-top:25px;
+}
+
+.section-title{
+    margin-bottom:15px;
+}
+
+.section-title h2{
+    font-size:24px;
+}
+
+.section-title p{
+    color:var(--muted);
+    margin-top:5px;
+}
+
+
+/* MISSION */
+
+.mission{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:27px;
+    line-height:1.8;
+}
+
+.mission p{
+    color:#4b5563;
+}
+
+
+/* FEATURES */
+
+.features{
+    display:grid;
+    grid-template-columns:
+        repeat(3,1fr);
+    gap:15px;
+}
+
+.feature{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:20px;
+}
+
+.feature-icon{
+    font-size:30px;
+}
+
+.feature h3{
+    margin-top:12px;
+}
+
+.feature p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+    margin-top:7px;
+}
+
+
+/* DEVELOPER */
+
+.developer{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:30px;
+    display:grid;
+    grid-template-columns:150px 1fr;
+    gap:25px;
+    align-items:center;
+}
+
+.avatar{
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:45px;
+    font-weight:900;
+    margin:auto;
+}
+
+.developer h2{
+    font-size:27px;
+}
+
+.role{
+    color:var(--primary);
+    font-weight:900;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.info{
+    margin-top:17px;
+    display:grid;
+    gap:10px;
+}
+
+.info-row{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    padding:11px;
+    background:#f8fafc;
+    border-radius:10px;
+}
+
+.info-row span:first-child{
+    width:28px;
+}
+
+.info-row a{
+    color:var(--text);
+    text-decoration:none;
+}
+
+.info-row a:hover{
+    color:var(--primary);
+}
+
+
+/* SOCIAL */
+
+.socials{
+    display:grid;
+    grid-template-columns:
+        repeat(3,1fr);
+    gap:15px;
+}
+
+.social{
+    background:white;
+    border:1px solid var(--border);
+    border-radius:17px;
+    padding:20px;
+    text-decoration:none;
+    color:var(--text);
+    transition:.2s;
+}
+
+.social:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,.07);
+}
+
+.social-icon{
+    font-size:30px;
+}
+
+.social h3{
+    margin-top:10px;
+}
+
+.social p{
+    color:var(--muted);
+    font-size:12px;
+    margin-top:5px;
+}
+
+
+/* CONTACT */
+
+.contact{
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+    color:white;
+    border-radius:22px;
+    padding:30px;
+    text-align:center;
+}
+
+.contact p{
+    margin-top:8px;
+    opacity:.9;
+}
+
+.contact-buttons{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:20px;
+}
+
+.contact-buttons a{
+    background:white;
+    color:var(--primary);
+    text-decoration:none;
+    padding:11px 17px;
+    border-radius:10px;
+    font-weight:900;
+    font-size:13px;
+}
+
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    color:var(--muted);
+    font-size:12px;
+    margin-top:35px;
+    padding-top:25px;
+    border-top:1px solid var(--border);
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:750px){
+
+    .features,
+    .socials{
+        grid-template-columns:1fr;
+    }
+
+    .developer{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .developer h2{
+        font-size:24px;
+    }
+
+    .info{
+        text-align:left;
+    }
+
+    .hero h1{
+        font-size:31px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .header{
+        padding:0 14px;
+    }
+
+    .hero{
+        padding:35px 18px;
+    }
+
+    .hero h1{
+        font-size:27px;
+    }
+
+    .developer{
+        padding:22px;
+    }
+
+}
+</style>
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="logo">
+
+        <div class="logo-box">
+            SH
+        </div>
+
+        <div>
+
+            <strong>
+                SCHOOL HUB
+            </strong>
+
+            <small>
+                Learn • Practice • Succeed
+            </small>
+
+        </div>
+
+    </div>
+
+
+    <button
+        class="home"
+        onclick="location.href='index.html'">
+
+        🏠 Home
+
+    </button>
+
+</header>
+
+
+
+<main class="container">
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <span class="badge">
+        ℹ️ ABOUT SCHOOL HUB
+    </span>
+
+    <h1>
+        Learn Smarter. Prepare Better.
+    </h1>
+
+    <p>
+        SCHOOL HUB is a digital learning platform
+        designed to help students organize their
+        study materials, practice questions and
+        prepare effectively for examinations.
+    </p>
+
+</section>
+
+
+
+<!-- MISSION -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            🎯 Our Mission
+        </h2>
+
+        <p>
+            Why SCHOOL HUB exists
+        </p>
+
+    </div>
+
+
+    <div class="mission">
+
+        <p>
+            SCHOOL HUB aims to make quality study
+            resources easier to access and easier
+            to practice. Students can read notes,
+            practice MCQs, take entrance mock exams,
+            review difficult topics and track their
+            learning progress in one organized place.
+        </p>
+
+        <br>
+
+        <p>
+            The platform is built with a focus on
+            simplicity, accessibility and
+            examination-oriented preparation.
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- FEATURES -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            🚀 What SCHOOL HUB Offers
+        </h2>
+
+        <p>
+            Main learning features
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📚
+            </div>
+
+            <h3>
+                Digital Notes
+            </h3>
+
+            <p>
+                Organized study notes by subject
+                and topic for quick revision.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🧠
+            </div>
+
+            <h3>
+                Practice Quiz
+            </h3>
+
+            <p>
+                Practice multiple-choice questions
+                and receive automatic results.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🎯
+            </div>
+
+            <h3>
+                Entrance Mock
+            </h3>
+
+            <p>
+                Simulate examination conditions
+                using timed mock exams.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔁
+            </div>
+
+            <h3>
+                Kobattii
+            </h3>
+
+            <p>
+                Review important concepts and
+                strengthen weak areas.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📊
+            </div>
+
+            <h3>
+                Progress
+            </h3>
+
+            <p>
+                Track your learning and revision
+                progress over time.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📱
+            </div>
+
+            <h3>
+                Mobile Friendly
+            </h3>
+
+            <p>
+                Designed to work comfortably on
+                phones, tablets and computers.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- DEVELOPER -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            👨‍💻 Developer
+        </h2>
+
+        <p>
+            Information about the builder
+        </p>
+
+    </div>
+
+
+    <div class="developer">
+
+        <div class="avatar">
+            AR
+        </div>
+
+
+        <div>
+
+            <h2>
+                Amir Rashid
+            </h2>
+
+            <div class="role">
+                BUILDER • DEVELOPER
+            </div>
+
+
+            <div class="info">
+
+                <div class="info-row">
+
+                    <span>
+                        📱
+                    </span>
+
+                    <a
+                        href="tel:+251936032601">
+
+                        +251 936 032 601
+
+                    </a>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        📧
+                    </span>
+
+                    <a
+                        href="mailto:amirrashidmath984@gmail.com">
+
+                        amirrashidmath984@gmail.com
+
+                    </a>
+
+                </div>
+
+
+                <div class="info-row">
+
+                    <span>
+                        🛠️
+                    </span>
+
+                    <span>
+                        SCHOOL HUB Builder
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- SOCIAL -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            🌐 Connect With Us
+        </h2>
+
+        <p>
+            Follow the creator and stay updated
+        </p>
+
+    </div>
+
+
+    <div class="socials">
+
+
+        <!-- TELEGRAM -->
+
+        <a
+            class="social"
+            href="https://t.me/amexorash"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <div class="social-icon">
+                ✈️
+            </div>
+
+            <h3>
+                Telegram
+            </h3>
+
+            <p>
+                @amexorash
+            </p>
+
+        </a>
+
+
+
+        <!-- WHATSAPP -->
+
+        <a
+            class="social"
+            href="https://wa.me/251936032601"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <div class="social-icon">
+                💬
+            </div>
+
+            <h3>
+                WhatsApp
+            </h3>
+
+            <p>
+                Contact Amir Rashid
+            </p>
+
+        </a>
+
+
+
+        <!-- YOUTUBE -->
+
+        <a
+            class="social"
+            href="https://youtube.com/@amexorash_official_music_zone/community?si=cUxZhmxvsuTZz3wF"
+            target="_blank"
+            rel="noopener noreferrer">
+
+            <div class="social-icon">
+                ▶️
+            </div>
+
+            <h3>
+                YouTube
+            </h3>
+
+            <p>
+                Amexo Rash
+            </p>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- CONTACT -->
+
+<section class="section">
+
+    <div class="contact">
+
+        <h2>
+            Have a Question?
+        </h2>
+
+        <p>
+            Contact the SCHOOL HUB developer directly.
+        </p>
+
+
+        <div class="contact-buttons">
+
+            <a
+                href="tel:+251936032601">
+
+                📱 Call
+
+            </a>
+
+
+            <a
+                href="mailto:amirrashidmath984@gmail.com">
+
+                📧 Email
+
+            </a>
+
+
+            <a
+                href="https://wa.me/251936032601"
+                target="_blank"
+                rel="noopener noreferrer">
+
+                💬 WhatsApp
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+    <p>
+        © 2026 SCHOOL HUB
+    </p>
+
+    <p style="margin-top:5px;">
+        Built by Amir Rashid
+    </p>
+
+</footer>
+
+
+</main>
+
+</body>
+</html>

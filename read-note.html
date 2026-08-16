@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Read Note | SCHOOL HUB Vs Amexo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+:root{
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+    --bg:#f8fafc;
+    --card:#fff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --sidebar:#0f172a;
+    --success:#16a34a;
+}
+
+body.dark{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:#334155;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:250px;
+
+    background:var(--sidebar);
+    color:white;
+
+    padding:25px 18px;
+
+    z-index:1000;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:0 8px 30px;
+}
+
+.brand-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    font-weight:800;
+}
+
+.brand-name{
+    font-weight:800;
+}
+
+.brand-name span{
+    color:#60a5fa;
+}
+
+.brand-name small{
+    display:block;
+    color:#94a3b8;
+    font-size:9px;
+}
+
+.menu-title{
+    color:#64748b;
+    font-size:10px;
+    font-weight:800;
+
+    padding:0 12px;
+
+    margin:15px 0 8px;
+
+    text-transform:uppercase;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding:12px;
+
+    margin:4px 0;
+
+    border-radius:9px;
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:600;
+}
+
+.menu-item:hover,
+.menu-item.active{
+    background:#1e3a8a;
+    color:white;
+}
+
+.menu-item span:first-child{
+    width:22px;
+    text-align:center;
+}
+
+.logout{
+    position:absolute;
+
+    bottom:20px;
+
+    left:18px;
+    right:18px;
+
+    border-top:1px solid #334155;
+
+    padding-top:15px;
+}
+
+.logout button{
+    width:100%;
+
+    border:none;
+    background:transparent;
+
+    color:#f87171;
+
+    cursor:pointer;
+
+    text-align:left;
+
+    padding:12px;
+
+    font-weight:700;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:250px;
+    min-height:100vh;
+}
+
+/* ================= TOPBAR ================= */
+
+.topbar{
+    height:72px;
+
+    background:var(--card);
+
+    border-bottom:1px solid var(--border);
+
+    padding:0 30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    position:sticky;
+    top:0;
+
+    z-index:500;
+}
+
+.mobile-menu{
+    display:none;
+
+    border:none;
+    background:transparent;
+
+    color:var(--text);
+
+    font-size:25px;
+
+    cursor:pointer;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+
+    gap:12px;
+}
+
+.theme-btn,
+.notification{
+    width:40px;
+    height:40px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    cursor:pointer;
+}
+
+.user-mini{
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+}
+
+.avatar{
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color:white;
+
+    font-weight:800;
+}
+
+.user-mini strong{
+    display:block;
+    font-size:13px;
+}
+
+.user-mini small{
+    color:var(--muted);
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    padding:30px;
+
+    max-width:1250px;
+
+    margin:auto;
+}
+
+/* ================= BREADCRUMB ================= */
+
+.breadcrumb{
+    display:flex;
+
+    gap:8px;
+
+    align-items:center;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    margin-bottom:20px;
+}
+
+.breadcrumb a{
+    color:var(--primary);
+
+    text-decoration:none;
+
+    font-weight:700;
+}
+
+/* ================= READER LAYOUT ================= */
+
+.reader-layout{
+    display:grid;
+
+    grid-template-columns:
+        250px 1fr;
+
+    gap:25px;
+
+    align-items:start;
+}
+
+/* ================= CHAPTERS ================= */
+
+.chapter-card{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:18px;
+
+    position:sticky;
+
+    top:95px;
+}
+
+.chapter-card h3{
+    font-size:15px;
+
+    margin-bottom:15px;
+}
+
+.chapter-progress{
+    margin-bottom:18px;
+}
+
+.progress-label{
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:10px;
+
+    color:var(--muted);
+
+    margin-bottom:6px;
+}
+
+.progress{
+    height:7px;
+
+    background:var(--border);
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.progress div{
+    height:100%;
+
+    width:25%;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            var(--secondary)
+        );
+}
+
+.chapter-link{
+    display:flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    padding:10px;
+
+    margin-bottom:5px;
+
+    border-radius:8px;
+
+    color:var(--muted);
+
+    text-decoration:none;
+
+    font-size:11px;
+
+    cursor:pointer;
+}
+
+.chapter-link:hover,
+.chapter-link.active{
+    background:#dbeafe;
+
+    color:var(--primary);
+
+    font-weight:800;
+}
+
+body.dark .chapter-link:hover,
+body.dark .chapter-link.active{
+    background:#172554;
+}
+
+/* ================= ARTICLE ================= */
+
+.article{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:35px 40px;
+}
+
+/* ================= ARTICLE HEADER ================= */
+
+.article-header{
+    border-bottom:1px solid var(--border);
+
+    padding-bottom:25px;
+
+    margin-bottom:28px;
+}
+
+.subject-badge{
+    display:inline-block;
+
+    background:#dbeafe;
+
+    color:var(--primary);
+
+    padding:6px 11px;
+
+    border-radius:20px;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    margin-bottom:14px;
+}
+
+.article h1{
+    font-size:34px;
+
+    line-height:1.2;
+
+    margin-bottom:10px;
+}
+
+.article-subtitle{
+    color:var(--muted);
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+.article-meta{
+    display:flex;
+
+    gap:18px;
+
+    color:var(--muted);
+
+    font-size:11px;
+
+    margin-top:15px;
+}
+
+/* ================= TEXT ================= */
+
+.article section{
+    margin-bottom:32px;
+}
+
+.article h2{
+    font-size:22px;
+
+    margin-bottom:13px;
+}
+
+.article h3{
+    font-size:17px;
+
+    margin:20px 0 9px;
+}
+
+.article p{
+    color:var(--text);
+
+    font-size:14px;
+
+    line-height:1.9;
+
+    margin-bottom:12px;
+}
+
+.article ul,
+.article ol{
+    padding-left:25px;
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+.article li{
+    margin-bottom:6px;
+}
+
+/* ================= FORMULA ================= */
+
+.formula{
+    background:#eff6ff;
+
+    border-left:4px solid var(--primary);
+
+    padding:18px;
+
+    border-radius:8px;
+
+    margin:17px 0;
+
+    font-family:
+        "Times New Roman",
+        serif;
+
+    font-size:19px;
+
+    text-align:center;
+
+    color:#1e3a8a;
+}
+
+body.dark .formula{
+    background:#172554;
+    color:#bfdbfe;
+}
+
+/* ================= EXAMPLE ================= */
+
+.example{
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    padding:18px;
+
+    margin:18px 0;
+
+    background:var(--bg);
+}
+
+.example-title{
+    color:var(--primary);
+
+    font-size:12px;
+
+    font-weight:900;
+
+    margin-bottom:10px;
+}
+
+.example p{
+    font-size:13px;
+}
+
+/* ================= TIP ================= */
+
+.tip{
+    background:#fef3c7;
+
+    border-left:4px solid #f59e0b;
+
+    padding:15px;
+
+    border-radius:8px;
+
+    margin:18px 0;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+body.dark .tip{
+    background:#422006;
+}
+
+/* ================= ACTIONS ================= */
+
+.article-actions{
+    display:flex;
+
+    gap:10px;
+
+    border-top:1px solid var(--border);
+
+    padding-top:25px;
+
+    margin-top:30px;
+}
+
+.action-btn{
+    border:none;
+
+    padding:12px 17px;
+
+    border-radius:9px;
+
+    cursor:pointer;
+
+    font-size:12px;
+
+    font-weight:800;
+
+    text-decoration:none;
+}
+
+.complete-btn{
+    background:var(--success);
+
+    color:white;
+}
+
+.bookmark-btn{
+    background:var(--bg);
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+}
+
+.practice-btn{
+    background:var(--primary);
+
+    color:white;
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:900px){
+
+    .sidebar{
+        left:-250px;
+    }
+
+    .sidebar.open{
+        left:0;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .reader-layout{
+        grid-template-columns:1fr;
+    }
+
+    .chapter-card{
+        position:static;
+    }
+
+    .chapter-links{
+        display:grid;
+
+        grid-template-columns:
+            repeat(2,1fr);
+
+        gap:4px;
+    }
+
+    .article{
+        padding:25px 20px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .content{
+        padding:20px 12px;
+    }
+
+    .article h1{
+        font-size:27px;
+    }
+
+    .article{
+        border-radius:12px;
+    }
+
+    .article-actions{
+        flex-direction:column;
+    }
+
+    .action-btn{
+        text-align:center;
+        width:100%;
+    }
+
+    .user-mini div{
+        display:none;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            SH
+        </div>
+
+        <div class="brand-name">
+            SCHOOL <span>HUB</span>
+            <small>Vs Amexo</small>
+        </div>
+
+    </div>
+
+    <div class="menu-title">
+        Main Menu
+    </div>
+
+    <a href="dashboard.html" class="menu-item">
+        <span>🏠</span>
+        Dashboard
+    </a>
+
+    <a href="courses.html" class="menu-item">
+        <span>📚</span>
+        My Courses
+    </a>
+
+    <a href="practice.html" class="menu-item">
+        <span>📝</span>
+        Practice
+    </a>
+
+    <a href="notes.html" class="menu-item active">
+        <span>📖</span>
+        Notes
+    </a>
+
+    <div class="menu-title">
+        Resources
+    </div>
+
+    <a href="library.html" class="menu-item">
+        <span>📄</span>
+        Digital Library
+    </a>
+
+    <a href="entrance.html" class="menu-item">
+        <span>🎯</span>
+        Entrance Exam
+    </a>
+
+    <a href="#" class="menu-item">
+        <span>🏆</span>
+        Leaderboard
+    </a>
+
+    <div class="menu-title">
+        Account
+    </div>
+
+    <a href="#" class="menu-item">
+        <span>⚙️</span>
+        Settings
+    </a>
+
+    <div class="logout">
+
+        <button onclick="logout()">
+            🚪 &nbsp; Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+<header class="topbar">
+
+    <button
+        class="mobile-menu"
+        onclick="toggleSidebar()"
+    >
+        ☰
+    </button>
+
+    <div></div>
+
+    <div class="top-actions">
+
+        <button
+            class="theme-btn"
+            id="themeBtn"
+            onclick="toggleTheme()"
+        >
+            🌙
+        </button>
+
+        <button class="notification">
+            🔔
+        </button>
+
+        <div class="user-mini">
+
+            <div class="avatar" id="avatar">
+                S
+            </div>
+
+            <div>
+
+                <strong id="userName">
+                    Student
+                </strong>
+
+                <small>
+                    Student
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="content">
+
+<!-- BREADCRUMB -->
+
+<div class="breadcrumb">
+
+    <a href="notes.html">
+        Notes
+    </a>
+
+    <span>›</span>
+
+    <span id="breadcrumbTitle">
+        Mathematics
+    </span>
+
+</div>
+
+
+<div class="reader-layout">
+
+<!-- ================= CHAPTER NAV ================= -->
+
+<aside class="chapter-card">
+
+    <h3>
+        📑 Contents
+    </h3>
+
+    <div class="chapter-progress">
+
+        <div class="progress-label">
+
+            <span>
+                Reading Progress
+            </span>
+
+            <strong id="progressText">
+                25%
+            </strong>
+
+        </div>
+
+        <div class="progress">
+
+            <div id="readingProgress"></div>
+
+        </div>
+
+    </div>
+
+
+    <div class="chapter-links">
+
+        <a
+            class="chapter-link active"
+            onclick="scrollToSection('intro')"
+        >
+            <span>01</span>
+            Introduction
+        </a>
+
+        <a
+            class="chapter-link"
+            onclick="scrollToSection('concept')"
+        >
+            <span>02</span>
+            Key Concepts
+        </a>
+
+        <a
+            class="chapter-link"
+            onclick="scrollToSection('formula')"
+        >
+            <span>03</span>
+            Important Formulas
+        </a>
+
+        <a
+            class="chapter-link"
+            onclick="scrollToSection('example')"
+        >
+            <span>04</span>
+            Examples
+        </a>
+
+        <a
+            class="chapter-link"
+            onclick="scrollToSection('exam')"
+        >
+            <span>05</span>
+            Exam Tips
+        </a>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= ARTICLE ================= -->
+
+<article class="article">
+
+    <header class="article-header">
+
+        <span class="subject-badge">
+            MATHEMATICS
+        </span>
+
+        <h1 id="noteTitle">
+            Functions & Graphs
+        </h1>
+
+        <p class="article-subtitle">
+            A structured study note designed to help
+            you understand the concept and prepare
+            for challenging examination questions.
+        </p>
+
+        <div class="article-meta">
+
+            <span>
+                📖 18 Pages
+            </span>
+
+            <span>
+                ⏱ 25 min read
+            </span>
+
+            <span>
+                🎯 Entrance Focus
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- INTRO -->
+
+    <section id="intro">
+
+        <h2>
+            1. Introduction
+        </h2>
+
+        <p>
+            A function is a mathematical relation in
+            which every input has exactly one output.
+            Functions are fundamental in mathematics
+            because they allow us to describe how one
+            quantity depends on another.
+        </p>
+
+        <p>
+            The input is usually represented by
+            <strong>x</strong>, while the output is
+            represented by <strong>f(x)</strong>.
+        </p>
+
+        <div class="formula">
+            f(x) = y
+        </div>
+
+        <p>
+            For example, if
+            <strong>f(x) = 2x + 3</strong>, then when
+            x = 4:
+        </p>
+
+        <div class="formula">
+            f(4) = 2(4) + 3 = 11
+        </div>
+
+    </section>
+
+
+    <!-- CONCEPT -->
+
+    <section id="concept">
+
+        <h2>
+            2. Key Concepts
+        </h2>
+
+        <h3>
+            Domain
+        </h3>
+
+        <p>
+            The domain of a function is the set of
+            all possible input values for which the
+            function is defined.
+        </p>
+
+        <h3>
+            Range
+        </h3>
+
+        <p>
+            The range is the set of all possible output
+            values produced by the function.
+        </p>
+
+        <h3>
+            Types of Functions
+        </h3>
+
+        <ul>
+
+            <li>
+                One-to-one function
+            </li>
+
+            <li>
+                Many-to-one function
+            </li>
+
+            <li>
+                Onto function
+            </li>
+
+            <li>
+                Polynomial function
+            </li>
+
+            <li>
+                Rational function
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- FORMULAS -->
+
+    <section id="formula">
+
+        <h2>
+            3. Important Formulas
+        </h2>
+
+        <div class="formula">
+            (f + g)(x) = f(x) + g(x)
+        </div>
+
+        <div class="formula">
+            (f - g)(x) = f(x) - g(x)
+        </div>
+
+        <div class="formula">
+            (fg)(x) = f(x)g(x)
+        </div>
+
+        <div class="formula">
+            (f ∘ g)(x) = f(g(x))
+        </div>
+
+        <p>
+            Function composition is especially
+            important when solving advanced
+            examination problems.
+        </p>
+
+    </section>
+
+
+    <!-- EXAMPLES -->
+
+    <section id="example">
+
+        <h2>
+            4. Worked Example
+        </h2>
+
+        <div class="example">
+
+            <div class="example-title">
+                EXAMPLE 01
+            </div>
+
+            <p>
+                If f(x) = 3x + 2, find f(5).
+            </p>
+
+            <div class="formula">
+                f(5) = 3(5) + 2
+                = 15 + 2
+                = 17
+            </div>
+
+        </div>
+
+
+        <div class="example">
+
+            <div class="example-title">
+                EXAMPLE 02
+            </div>
+
+            <p>
+                If f(x) = x² − 4, find f(3).
+            </p>
+
+            <div class="formula">
+                f(3) = 3² − 4
+                = 9 − 4
+                = 5
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- EXAM -->
+
+    <section id="exam">
+
+        <h2>
+            5. Entrance Exam Tips 🎯
+        </h2>
+
+        <div class="tip">
+
+            <strong>
+                Important:
+            </strong>
+
+            In entrance-style questions,
+            do not only memorize formulas.
+            First identify the domain,
+            required operation and the exact
+            information given in the question.
+
+        </div>
+
+        <ul>
+
+            <li>
+                Read the question carefully.
+            </li>
+
+            <li>
+                Identify what is given and what
+                must be found.
+            </li>
+
+            <li>
+                Check restrictions on the domain.
+            </li>
+
+            <li>
+                Simplify before calculating.
+            </li>
+
+            <li>
+                Check your final answer.
+            </li>
+
+        </ul>
+
+    </section>
+
+
+    <!-- ACTIONS -->
+
+    <div class="article-actions">
+
+        <button
+            class="action-btn complete-btn"
+            onclick="markComplete()"
+            id="completeBtn"
+        >
+            ✓ Mark as Complete
+        </button>
+
+        <button
+            class="action-btn bookmark-btn"
+            onclick="toggleBookmark()"
+            id="bookmarkBtn"
+        >
+            ☆ Bookmark
+        </button>
+
+        <a
+            href="practice.html"
+            class="action-btn practice-btn"
+        >
+            📝 Practice Questions →
+        </a>
+
+    </div>
+
+</article>
+
+</div>
+
+</main>
+
+</div>
+
+
+<script>
+
+/* ================= LOGIN ================= */
+
+const currentUser =
+    JSON.parse(
+        localStorage.getItem(
+            "schoolHubCurrentUser"
+        )
+    );
+
+if(!currentUser){
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* ================= USER ================= */
+
+if(currentUser){
+
+    const name =
+        currentUser.name || "Student";
+
+    document.getElementById(
+        "userName"
+    ).textContent = name;
+
+
+    const initials =
+        name
+        .split(" ")
+        .map(
+            word =>
+            word.charAt(0)
+        )
+        .join("")
+        .substring(0,2)
+        .toUpperCase();
+
+
+    document.getElementById(
+        "avatar"
+    ).textContent =
+        initials;
+
+}
+
+
+/* ================= NOTE DATA ================= */
+
+const noteData = {
+
+    functions:{
+        title:"Functions & Graphs",
+        subject:"MATHEMATICS"
+    },
+
+    logarithms:{
+        title:"Logarithms",
+        subject:"MATHEMATICS"
+    },
+
+    energy:{
+        title:"Work, Energy & Power",
+        subject:"PHYSICS"
+    },
+
+    electricity:{
+        title:"Electricity",
+        subject:"PHYSICS"
+    },
+
+    reactions:{
+        title:"Chemical Reactions",
+        subject:"CHEMISTRY"
+    },
+
+    stoichiometry:{
+        title:"Stoichiometry",
+        subject:"CHEMISTRY"
+    },
+
+    nutrition:{
+        title:"Nutrition",
+        subject:"BIOLOGY"
+    },
+
+    genetics:{
+        title:"Genetics",
+        subject:"BIOLOGY"
+    },
+
+    grammar:{
+        title:"English Grammar",
+        subject:"ENGLISH"
+    }
+
+};
+
+
+/* ================= GET NOTE ================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const note =
+    params.get("note")
+    || "functions";
+
+
+const data =
+    noteData[note]
+    || noteData.functions;
+
+
+/* ================= UPDATE ================= */
+
+document.getElementById(
+    "noteTitle"
+).textContent =
+    data.title;
+
+
+document.getElementById(
+    "breadcrumbTitle"
+).textContent =
+    data.title;
+
+
+document.querySelector(
+    ".subject-badge"
+).textContent =
+    data.subject;
+
+
+/* ================= SCROLL ================= */
+
+function scrollToSection(id){
+
+    const element =
+        document.getElementById(id);
+
+    if(element){
+
+        element.scrollIntoView({
+            behavior:"smooth",
+            block:"start"
+        });
+
+    }
+
+}
+
+
+/* ================= READING PROGRESS ================= */
+
+window.addEventListener(
+    "scroll",
+    updateProgress
+);
+
+
+function updateProgress(){
+
+    const article =
+        document.querySelector(
+            ".article"
+        );
+
+    const rect =
+        article.getBoundingClientRect();
+
+    const total =
+        article.offsetHeight -
+        window.innerHeight;
+
+    const current =
+        Math.max(
+            0,
+            -rect.top
+        );
+
+    let percentage =
+        Math.round(
+            (current / total) * 100
+        );
+
+    percentage =
+        Math.min(
+            100,
+            Math.max(
+                0,
+                percentage
+            )
+        );
+
+
+    document.getElementById(
+        "readingProgress"
+    ).style.width =
+        percentage + "%";
+
+
+    document.getElementById(
+        "progressText"
+    ).textContent =
+        percentage + "%";
+
+}
+
+
+/* ================= COMPLETE ================= */
+
+function markComplete(){
+
+    const key =
+        "completed_" +
+        note +
+        "_" +
+        (
+            currentUser.email ||
+            currentUser.name ||
+            "student"
+        );
+
+
+    localStorage.setItem(
+        key,
+        "true"
+    );
+
+
+    const button =
+        document.getElementById(
+            "completeBtn"
+        );
+
+
+    button.textContent =
+        "✓ Completed";
+
+
+    button.style.background =
+        "#15803d";
+
+}
+
+
+/* ================= CHECK COMPLETE ================= */
+
+const completeKey =
+    "completed_" +
+    note +
+    "_" +
+    (
+        currentUser.email ||
+        currentUser.name ||
+        "student"
+    );
+
+
+if(
+    localStorage.getItem(
+        completeKey
+    ) === "true"
+){
+
+    const button =
+        document.getElementById(
+            "completeBtn"
+        );
+
+    button.textContent =
+        "✓ Completed";
+
+    button.style.background =
+        "#15803d";
+
+}
+
+
+/* ================= BOOKMARK ================= */
+
+function toggleBookmark(){
+
+    const key =
+        "bookmark_" +
+        note +
+        "_" +
+        (
+            currentUser.email ||
+            currentUser.name ||
+            "student"
+        );
+
+
+    const button =
+        document.getElementById(
+            "bookmarkBtn"
+        );
+
+
+    if(
+        localStorage.getItem(key)
+        === "true"
+    ){
+
+        localStorage.removeItem(key);
+
+        button.textContent =
+            "☆ Bookmark";
+
+    }else{
+
+        localStorage.setItem(
+            key,
+            "true"
+        );
+
+        button.textContent =
+            "★ Bookmarked";
+
+    }
+
+}
+
+
+/* ================= CHECK BOOKMARK ================= */
+
+const bookmarkKey =
+    "bookmark_" +
+    note +
+    "_" +
+    (
+        currentUser.email ||
+        currentUser.name ||
+        "student"
+    );
+
+
+if(
+    localStorage.getItem(
+        bookmarkKey
+    ) === "true"
+){
+
+    document.getElementById(
+        "bookmarkBtn"
+    ).textContent =
+        "★ Bookmarked";
+
+}
+
+
+/* ================= SIDEBAR ================= */
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
+
+}
+
+
+/* ================= THEME ================= */
+
+function toggleTheme(){
+
+    document.body
+        .classList
+        .toggle("dark");
+
+
+    const button =
+        document.getElementById(
+            "themeBtn"
+        );
+
+
+    if(
+        document.body
+        .classList
+        .contains("dark")
+    ){
+
+        button.textContent =
+            "☀️";
+
+        localStorage.setItem(
+            "schoolHubTheme",
+            "dark"
+        );
+
+    }else{
+
+        button.textContent =
+            "🌙";
+
+        localStorage.setItem(
+            "schoolHubTheme",
+            "light"
+        );
+
+    }
+
+}
+
+
+/* ================= LOAD THEME ================= */
+
+if(
+    localStorage.getItem(
+        "schoolHubTheme"
+    ) === "dark"
+){
+
+    document.body
+        .classList
+        .add("dark");
+
+    document.getElementById(
+        "themeBtn"
+    ).textContent =
+        "☀️";
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+    if(
+        !confirm(
+            "Are you sure you want to logout?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "schoolHubCurrentUser"
+    );
+
+    localStorage.removeItem(
+        "schoolHubRemember"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+</script>
+
+</body>
+</html>

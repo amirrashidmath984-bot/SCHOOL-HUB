@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SCHOOL HUB Vs Amexo | Learn • Practice • Achieve</title>
+
+    <meta name="description"
+          content="SCHOOL HUB Vs Amexo is a modern educational platform for students to learn, practice and prepare for entrance examinations.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --border: #334155;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            transition: 0.3s;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            height: 72px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .nav-links a {
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
+            transition: .2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-btn,
+        .menu-btn {
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--text);
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            padding: 10px 18px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            border-radius: 9px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .join-btn {
+            padding: 11px 18px;
+            border-radius: 9px;
+            color: white;
+            background: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .menu-btn {
+            display: none;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            max-width: 1200px;
+            margin: auto;
+            min-height: 650px;
+            padding: 90px 20px;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .badge {
+            display: inline-flex;
+            padding: 8px 14px;
+            border-radius: 30px;
+            background: #dbeafe;
+            color: #1d4ed8;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        body.dark .badge {
+            background: #1e3a8a;
+            color: #bfdbfe;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 70px);
+            line-height: 1.05;
+            margin-bottom: 22px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            max-width: 620px;
+            color: var(--muted);
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .primary-btn {
+            background: var(--primary);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        .secondary-btn {
+            border: 1px solid var(--border);
+            background: var(--card);
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        /* ================= HERO CARD ================= */
+
+        .hero-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            padding: 28px;
+            box-shadow: 0 20px 50px rgba(15, 23, 42, .10);
+        }
+
+        .dashboard-top {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .dashboard-title {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .online {
+            color: #16a34a;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .progress-box {
+            background: var(--bg);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .progress {
+            height: 9px;
+            border-radius: 20px;
+            background: var(--border);
+            overflow: hidden;
+        }
+
+        .progress div {
+            width: 76%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .stat {
+            background: var(--bg);
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 21px;
+        }
+
+        .stat small {
+            color: var(--muted);
+        }
+
+        /* ================= GENERAL ================= */
+
+        section {
+            padding: 80px 20px;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .section-heading {
+            text-align: center;
+            max-width: 650px;
+            margin: 0 auto 45px;
+        }
+
+        .section-heading h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+        }
+
+        /* ================= COURSES ================= */
+
+        .courses {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .course {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 17px;
+            padding: 25px;
+            transition: .25s;
+        }
+
+        .course:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 35px rgba(0,0,0,.08);
+        }
+
+        .course-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #dbeafe;
+            font-size: 25px;
+            margin-bottom: 18px;
+        }
+
+        .course h3 {
+            margin-bottom: 7px;
+        }
+
+        .course p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .course-link {
+            display: inline-block;
+            margin-top: 18px;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* ================= FEATURES ================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .feature {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 17px;
+        }
+
+        .feature-icon {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .feature p {
+            color: var(--muted);
+            font-size: 14px;
+            margin-top: 8px;
+        }
+
+        /* ================= ENTRANCE ================= */
+
+        .entrance {
+            background: linear-gradient(135deg, #1d4ed8, #6d28d9);
+            color: white;
+            border-radius: 28px;
+            max-width: 1200px;
+            margin: auto;
+            padding: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .entrance h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .entrance p {
+            opacity: .85;
+            max-width: 650px;
+        }
+
+        .entrance-btn {
+            background: white;
+            color: #1d4ed8;
+            padding: 14px 22px;
+            border-radius: 10px;
+            font-weight: 800;
+            white-space: nowrap;
+        }
+
+        /* ================= CTA ================= */
+
+        .cta {
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: var(--muted);
+            margin-bottom: 25px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #020617;
+            color: white;
+            padding: 55px 20px 25px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-brand p {
+            color: #94a3b8;
+            margin-top: 12px;
+            max-width: 330px;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 15px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #94a3b8;
+            margin-bottom: 9px;
+            font-size: 14px;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            color: #64748b;
+            font-size: 13px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 900px) {
+
+            .nav-links {
+                position: absolute;
+                top: 72px;
+                left: 0;
+                right: 0;
+                display: none;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 25px;
+                background: var(--card);
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .login-btn,
+            .join-btn {
+                display: none;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 60px;
+            }
+
+            .courses {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .entrance {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 40px 25px;
+            }
+
+            .footer-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .courses {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .entrance h2,
+            .cta h2 {
+                font-size: 30px;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <a href="#" class="logo">
+            <div class="logo-icon">SH</div>
+            <div>
+                SCHOOL <span>HUB</span>
+                <small style="display:block;font-size:9px;color:#64748b;">
+                    Vs Amexo
+                </small>
+            </div>
+        </a>
+
+        <div class="nav-links" id="navLinks">
+            <a href="#home">Home</a>
+            <a href="#courses">Courses</a>
+            <a href="#practice">Practice</a>
+            <a href="#library">Library</a>
+            <a href="#entrance">Entrance</a>
+            <a href="#about">About</a>
+        </div>
+
+        <div class="nav-actions">
+
+            <button class="theme-btn" onclick="toggleTheme()">
+                🌙
+            </button>
+
+            <a href="login.html" class="login-btn">
+                Login
+            </a>
+
+            <a href="signup.html" class="join-btn">
+                Join Now
+            </a>
+
+            <button class="menu-btn" onclick="toggleMenu()">
+                ☰
+            </button>
+
+        </div>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= HERO ================= -->
+
+<main id="home">
+
+<section class="hero">
+
+    <div>
+
+        <div class="badge">
+            🎓 Modern Learning Platform
+        </div>
+
+        <h1>
+            Learn Smarter.<br>
+            <span>Achieve More.</span>
+        </h1>
+
+        <p>
+            Welcome to SCHOOL HUB Vs Amexo — a modern educational
+            platform designed to help students learn, practice,
+            track progress and prepare for important examinations.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="signup.html" class="primary-btn">
+                🚀 Join SCHOOL HUB
+            </a>
+
+            <a href="#courses" class="secondary-btn">
+                Explore Courses →
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="dashboard-top">
+
+            <div>
+                <div class="dashboard-title">
+                    Student Dashboard
+                </div>
+
+                <small style="color:var(--muted);">
+                    Your learning overview
+                </small>
+            </div>
+
+            <div class="online">
+                ● Online
+            </div>
+
+        </div>
+
+
+        <div class="progress-box">
+
+            <div class="progress-info">
+                <span>Overall Progress</span>
+                <span>76%</span>
+            </div>
+
+            <div class="progress">
+                <div></div>
+            </div>
+
+        </div>
+
+
+        <div class="stats">
+
+            <div class="stat">
+                <strong>24</strong>
+                <small>Courses</small>
+            </div>
+
+            <div class="stat">
+                <strong>186</strong>
+                <small>Questions</small>
+            </div>
+
+            <div class="stat">
+                <strong>92%</strong>
+                <small>Average</small>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COURSES ================= -->
+
+<section id="courses">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <h2>Explore Your Subjects</h2>
+
+            <p>
+                Build strong foundations with organized lessons,
+                notes and practice questions.
+            </p>
+
+        </div>
+
+
+        <div class="courses">
+
+            <div class="course">
+
+                <div class="course-icon">🧮</div>
+
+                <h3>Mathematics</h3>
+
+                <p>
+                    Functions, algebra, geometry, logarithms,
+                    trigonometry and more.
+                </p>
+
+                <a href="#" class="course-link">
+                    Start Learning →
+                </a>
+
+            </div>
+
+
+            <div class="course">
+
+                <div class="course-icon">⚛️</div>
+
+                <h3>Physics</h3>
+
+                <p>
+                    Mechanics, electricity, waves, heat,
+                    energy and modern physics.
+                </p>
+
+                <a href="#" class="course-link">
+                    Start Learning →
+                </a>
+
+            </div>
+
+
+            <div class="course">
+
+                <div class="course-icon">🧪</div>
+
+                <h3>Chemistry</h3>
+
+                <p>
+                    Atomic structure, reactions, stoichiometry,
+                    organic chemistry and more.
+                </p>
+
+                <a href="#" class="course-link">
+                    Start Learning →
+                </a>
+
+            </div>
+
+
+            <div class="course">
+
+                <div class="course-icon">🌿</div>
+
+                <h3>Biology</h3>
+
+                <p>
+                    Cells, nutrition, genetics, ecology,
+                    human biology and evolution.
+                </p>
+
+                <a href="#" class="course-link">
+                    Start Learning →
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FEATURES ================= -->
+
+<section id="practice">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <h2>Everything You Need</h2>
+
+            <p>
+                One platform for learning, practice and
+                examination preparation.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <div class="feature">
+
+                <div class="feature-icon">📚</div>
+
+                <h3>Smart Notes</h3>
+
+                <p>
+                    Organized notes that make difficult concepts
+                    easier to understand and review.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">📝</div>
+
+                <h3>Practice Questions</h3>
+
+                <p>
+                    Challenge yourself with MCQs and
+                    examination-style questions.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">📊</div>
+
+                <h3>Track Progress</h3>
+
+                <p>
+                    Monitor your scores, completed courses
+                    and learning progress.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">📄</div>
+
+                <h3>Digital Library</h3>
+
+                <p>
+                    Access educational PDFs, books and
+                    learning resources in one place.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">🏆</div>
+
+                <h3>Leaderboard</h3>
+
+                <p>
+                    Compare your practice performance and
+                    challenge yourself to improve.
+                </p>
+
+            </div>
+
+
+            <div class="feature">
+
+                <div class="feature-icon">📱</div>
+
+                <h3>Mobile Friendly</h3>
+
+                <p>
+                    Study comfortably from your phone,
+                    tablet or computer.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ENTRANCE EXAM ================= -->
+
+<section id="entrance">
+
+    <div class="entrance">
+
+        <div>
+
+            <h2>Prepare for Your Entrance Exam 🎯</h2>
+
+            <p>
+                Practice challenging questions, review concepts,
+                measure your performance and become ready for
+                your next major examination.
+            </p>
+
+        </div>
+
+        <a href="entrance.html" class="entrance-btn">
+            Start Preparation →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= LIBRARY ================= -->
+
+<section id="library">
+
+    <div class="section-container">
+
+        <div class="section-heading">
+
+            <h2>Digital Learning Library</h2>
+
+            <p>
+                Notes, books, PDFs and other resources organized
+                for easier learning.
+            </p>
+
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <div class="feature-icon">📕</div>
+                <h3>Textbooks</h3>
+                <p>
+                    Find useful educational books and references.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">📑</div>
+                <h3>Revision Notes</h3>
+                <p>
+                    Quickly review important concepts before exams.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="feature-icon">📂</div>
+                <h3>PDF Resources</h3>
+                <p>
+                    Keep your learning materials organized.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CTA ================= -->
+
+<section id="about">
+
+    <div class="section-container cta">
+
+        <h2>Ready to Start Learning?</h2>
+
+        <p>
+            Create your free account and start building
+            your academic future today.
+        </p>
+
+        <a href="signup.html" class="primary-btn">
+            Create Your Account →
+        </a>
+
+    </div>
+
+</section>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+        <div class="footer-brand">
+
+            <div class="logo">
+                <div class="logo-icon">SH</div>
+                <div>
+                    SCHOOL <span>HUB</span>
+                    <small style="display:block;font-size:9px;color:#94a3b8;">
+                        Vs Amexo
+                    </small>
+                </div>
+            </div>
+
+            <p>
+                Learn. Practice. Achieve.
+                A modern educational platform built
+                for ambitious students.
+            </p>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>Platform</h4>
+
+            <a href="#courses">Courses</a>
+            <a href="#practice">Practice</a>
+            <a href="#library">Library</a>
+            <a href="#entrance">Entrance Exam</a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>Account</h4>
+
+            <a href="login.html">Login</a>
+            <a href="signup.html">Join Now</a>
+            <a href="dashboard.html">Dashboard</a>
+
+        </div>
+
+
+        <div class="footer-col">
+
+            <h4>Support</h4>
+
+            <a href="#">Help Center</a>
+            <a href="#">Contact</a>
+            <a href="#">About Us</a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        © 2026 SCHOOL HUB Vs Amexo.
+        All Rights Reserved.
+
+    </div>
+
+</footer>
+
+
+<script>
+
+    // Mobile Menu
+    function toggleMenu() {
+
+        const nav = document.getElementById("navLinks");
+
+        nav.classList.toggle("active");
+
+    }
+
+
+    // Dark / Light Mode
+    function toggleTheme() {
+
+        document.body.classList.toggle("dark");
+
+        const button = document.querySelector(".theme-btn");
+
+        if (document.body.classList.contains("dark")) {
+
+            button.textContent = "☀️";
+
+            localStorage.setItem("theme", "dark");
+
+        } else {
+
+            button.textContent = "🌙";
+
+            localStorage.setItem("theme", "light");
+
+        }
+
+    }
+
+
+    // Remember Theme
+    window.onload = function () {
+
+        const savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+
+            document.body.classList.add("dark");
+
+            document.querySelector(".theme-btn").textContent = "☀️";
+
+        }
+
+    };
+
+</script>
+
+</body>
+</html>

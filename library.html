@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Digital Library | SCHOOL HUB Vs Amexo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+:root{
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --sidebar:#0f172a;
+}
+
+body.dark{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:#334155;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    top:0;
+    left:0;
+    bottom:0;
+    width:250px;
+    background:var(--sidebar);
+    color:white;
+    padding:24px 18px;
+    z-index:1000;
+    transition:.3s;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:0 8px 30px;
+}
+
+.brand-icon{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+    font-weight:900;
+}
+
+.brand-name{
+    font-weight:800;
+}
+
+.brand-name span{
+    color:#60a5fa;
+}
+
+.brand-name small{
+    display:block;
+    color:#94a3b8;
+    font-size:9px;
+}
+
+.menu-title{
+    color:#64748b;
+    font-size:10px;
+    font-weight:800;
+    margin:16px 12px 8px;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    margin:4px 0;
+    border-radius:9px;
+    color:#cbd5e1;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+}
+
+.menu-item:hover,
+.menu-item.active{
+    background:#1e3a8a;
+    color:white;
+}
+
+.menu-item span{
+    width:22px;
+    text-align:center;
+}
+
+.logout{
+    position:absolute;
+    bottom:20px;
+    left:18px;
+    right:18px;
+    border-top:1px solid #334155;
+    padding-top:15px;
+}
+
+.logout button{
+    width:100%;
+    background:none;
+    border:0;
+    color:#f87171;
+    text-align:left;
+    padding:12px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+/* MAIN */
+
+.main{
+    margin-left:250px;
+    min-height:100vh;
+}
+
+.topbar{
+    height:72px;
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 30px;
+    position:sticky;
+    top:0;
+    z-index:500;
+}
+
+.mobile-menu{
+    display:none;
+    background:none;
+    border:0;
+    color:var(--text);
+    font-size:25px;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.theme-btn,
+.notification{
+    width:40px;
+    height:40px;
+    border-radius:10px;
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    cursor:pointer;
+}
+
+.user-mini{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.avatar{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(
+        135deg,
+        #2563eb,
+        #7c3aed
+    );
+    color:white;
+    font-weight:800;
+}
+
+.user-mini strong{
+    display:block;
+    font-size:13px;
+}
+
+.user-mini small{
+    color:var(--muted);
+}
+
+/* CONTENT */
+
+.content{
+    padding:30px;
+    max-width:1300px;
+    margin:auto;
+}
+
+/* HERO */
+
+.hero{
+    padding:35px;
+    border-radius:20px;
+    background:linear-gradient(
+        135deg,
+        #1d4ed8,
+        #6d28d9
+    );
+    color:white;
+    margin-bottom:25px;
+    position:relative;
+    overflow:hidden;
+}
+
+.hero h1{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#dbeafe;
+    max-width:650px;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.hero-icon{
+    position:absolute;
+    right:50px;
+    bottom:-30px;
+    font-size:130px;
+    opacity:.15;
+}
+
+/* SEARCH */
+
+.library-tools{
+    display:flex;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.search-box{
+    flex:1;
+    position:relative;
+}
+
+.search-box input{
+    width:100%;
+    padding:15px 18px 15px 45px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    outline:none;
+    background:var(--card);
+    color:var(--text);
+}
+
+.search-icon{
+    position:absolute;
+    left:16px;
+    top:14px;
+}
+
+/* FILTERS */
+
+.filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.filter{
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    padding:10px 16px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:700;
+}
+
+.filter:hover,
+.filter.active{
+    background:var(--primary);
+    color:white;
+    border-color:var(--primary);
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.stat{
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:18px;
+    border-radius:14px;
+}
+
+.stat-icon{
+    font-size:22px;
+}
+
+.stat strong{
+    display:block;
+    font-size:21px;
+    margin-top:7px;
+}
+
+.stat small{
+    color:var(--muted);
+}
+
+/* SECTION */
+
+.section-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.section-header h2{
+    font-size:20px;
+}
+
+.section-header span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* BOOK GRID */
+
+.book-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(4,1fr);
+    gap:18px;
+}
+
+.book-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+    transition:.2s;
+}
+
+.book-card:hover{
+    transform:translateY(-4px);
+    box-shadow:
+        0 12px 30px
+        rgba(0,0,0,.08);
+}
+
+.book-cover{
+    height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:65px;
+    background:linear-gradient(
+        135deg,
+        #dbeafe,
+        #ede9fe
+    );
+    position:relative;
+}
+
+.book-grade{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:var(--primary);
+    color:white;
+    padding:5px 9px;
+    border-radius:6px;
+    font-size:9px;
+    font-weight:800;
+}
+
+.book-type{
+    position:absolute;
+    right:10px;
+    top:10px;
+    background:#0f172a;
+    color:white;
+    padding:5px 8px;
+    border-radius:6px;
+    font-size:9px;
+}
+
+.book-info{
+    padding:17px;
+}
+
+.subject{
+    color:var(--primary);
+    font-size:10px;
+    font-weight:800;
+    text-transform:uppercase;
+}
+
+.book-info h3{
+    font-size:15px;
+    margin:7px 0;
+    line-height:1.4;
+}
+
+.book-info p{
+    color:var(--muted);
+    font-size:11px;
+    line-height:1.5;
+    min-height:33px;
+}
+
+.book-meta{
+    display:flex;
+    justify-content:space-between;
+    color:var(--muted);
+    font-size:10px;
+    margin:13px 0;
+}
+
+.book-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.book-btn{
+    flex:1;
+    border:0;
+    border-radius:8px;
+    padding:10px;
+    cursor:pointer;
+    font-size:11px;
+    font-weight:800;
+}
+
+.read{
+    background:var(--primary);
+    color:white;
+}
+
+.download{
+    background:var(--bg);
+    color:var(--text);
+    border:1px solid var(--border);
+}
+
+/* EMPTY */
+
+.empty{
+    display:none;
+    text-align:center;
+    padding:60px 20px;
+    color:var(--muted);
+}
+
+.empty-icon{
+    font-size:50px;
+    margin-bottom:10px;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.7);
+    z-index:2000;
+    padding:25px;
+    align-items:center;
+    justify-content:center;
+}
+
+.modal-content{
+    width:min(900px,100%);
+    height:90vh;
+    background:var(--card);
+    border-radius:18px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+}
+
+.modal-header{
+    padding:15px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.modal-header h3{
+    font-size:15px;
+}
+
+.close{
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:8px;
+    background:var(--bg);
+    color:var(--text);
+    cursor:pointer;
+    font-size:18px;
+}
+
+.pdf-area{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#e2e8f0;
+    color:#475569;
+    text-align:center;
+    padding:30px;
+}
+
+.pdf-area div{
+    max-width:400px;
+}
+
+.pdf-area strong{
+    display:block;
+    font-size:25px;
+    margin-bottom:10px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+
+    .book-grid{
+        grid-template-columns:
+            repeat(3,1fr);
+    }
+
+}
+
+@media(max-width:900px){
+
+    .sidebar{
+        left:-250px;
+    }
+
+    .sidebar.open{
+        left:0;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .book-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+@media(max-width:600px){
+
+    .content{
+        padding:18px 12px;
+    }
+
+    .hero{
+        padding:25px 20px;
+    }
+
+    .hero h1{
+        font-size:25px;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+    .book-grid{
+        grid-template-columns:1fr;
+    }
+
+    .library-tools{
+        flex-direction:column;
+    }
+
+    .user-mini div{
+        display:none;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            SH
+        </div>
+
+        <div class="brand-name">
+            SCHOOL <span>HUB</span>
+            <small>Vs Amexo</small>
+        </div>
+
+    </div>
+
+    <div class="menu-title">
+        Main Menu
+    </div>
+
+    <a href="dashboard.html" class="menu-item">
+        <span>🏠</span>
+        Dashboard
+    </a>
+
+    <a href="courses.html" class="menu-item">
+        <span>📚</span>
+        My Courses
+    </a>
+
+    <a href="practice.html" class="menu-item">
+        <span>📝</span>
+        Practice
+    </a>
+
+    <a href="notes.html" class="menu-item">
+        <span>📖</span>
+        Notes
+    </a>
+
+    <div class="menu-title">
+        Resources
+    </div>
+
+    <a href="library.html"
+       class="menu-item active">
+        <span>📄</span>
+        Digital Library
+    </a>
+
+    <a href="entrance.html"
+       class="menu-item">
+        <span>🎯</span>
+        Entrance Exam
+    </a>
+
+    <a href="#"
+       class="menu-item">
+        <span>🏆</span>
+        Leaderboard
+    </a>
+
+    <div class="menu-title">
+        Account
+    </div>
+
+    <a href="#"
+       class="menu-item">
+        <span>⚙️</span>
+        Settings
+    </a>
+
+    <div class="logout">
+
+        <button onclick="logout()">
+            🚪 &nbsp; Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+<header class="topbar">
+
+    <button
+        class="mobile-menu"
+        onclick="toggleSidebar()">
+        ☰
+    </button>
+
+    <div></div>
+
+    <div class="top-actions">
+
+        <button
+            class="theme-btn"
+            id="themeBtn"
+            onclick="toggleTheme()">
+            🌙
+        </button>
+
+        <button class="notification">
+            🔔
+        </button>
+
+        <div class="user-mini">
+
+            <div class="avatar"
+                 id="avatar">
+                S
+            </div>
+
+            <div>
+
+                <strong id="userName">
+                    Student
+                </strong>
+
+                <small>
+                    Grade 12 Student
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="content">
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <h1>
+        Digital Library 📚
+    </h1>
+
+    <p>
+        Access your learning materials,
+        textbooks, revision notes and
+        examination resources in one place.
+        Select your grade and subject to
+        find the materials you need.
+    </p>
+
+    <div class="hero-icon">
+        📚
+    </div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="library-tools">
+
+    <div class="search-box">
+
+        <span class="search-icon">
+            🔍
+        </span>
+
+        <input
+            type="text"
+            id="search"
+            placeholder="Search books, subjects, topics..."
+            oninput="searchBooks()"
+        >
+
+    </div>
+
+</div>
+
+
+<!-- FILTER -->
+
+<div class="filters">
+
+    <button
+        class="filter active"
+        onclick="filterBooks('all',this)">
+        All
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterBooks('Grade 9',this)">
+        Grade 9
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterBooks('Grade 10',this)">
+        Grade 10
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterBooks('Grade 11',this)">
+        Grade 11
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterBooks('Grade 12',this)">
+        Grade 12
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterBooks('Mathematics',this)">
+        Mathematics
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterBooks('Physics',this)">
+        Physics
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterBooks('Chemistry',this)">
+        Chemistry
+    </button>
+
+    <button
+        class="filter"
+        onclick="filterBooks('Biology',this)">
+        Biology
+    </button>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats">
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            📚
+        </div>
+
+        <strong id="totalBooks">
+            12
+        </strong>
+
+        <small>
+            Available Resources
+        </small>
+
+    </div>
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            📘
+        </div>
+
+        <strong>
+            4
+        </strong>
+
+        <small>
+            Subjects
+        </small>
+
+    </div>
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            🎓
+        </div>
+
+        <strong>
+            4
+        </strong>
+
+        <small>
+            Grade Levels
+        </small>
+
+    </div>
+
+    <div class="stat">
+
+        <div class="stat-icon">
+            📥
+        </div>
+
+        <strong id="downloads">
+            0
+        </strong>
+
+        <small>
+            My Downloads
+        </small>
+
+    </div>
+
+</div>
+
+
+<!-- BOOKS -->
+
+<div class="section-header">
+
+    <h2>
+        Learning Resources
+    </h2>
+
+    <span id="resultCount">
+        12 resources
+    </span>
+
+</div>
+
+
+<div
+    class="book-grid"
+    id="bookGrid"
+>
+
+
+<!-- BOOK 1 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 12"
+    data-subject="Mathematics"
+    data-search="grade 12 mathematics mathematics textbook algebra functions logarithm"
+>
+
+    <div class="book-cover">
+
+        📐
+
+        <span class="book-grade">
+            GRADE 12
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Mathematics
+        </span>
+
+        <h3>
+            Grade 12 Mathematics
+        </h3>
+
+        <p>
+            Complete mathematics learning
+            material for Grade 12 students.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 245 pages</span>
+            <span>⭐ 4.9</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 12 Mathematics')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 12 Mathematics')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 2 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 12"
+    data-subject="Physics"
+    data-search="grade 12 physics textbook mechanics electricity waves"
+>
+
+    <div class="book-cover">
+
+        ⚡
+
+        <span class="book-grade">
+            GRADE 12
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Physics
+        </span>
+
+        <h3>
+            Grade 12 Physics
+        </h3>
+
+        <p>
+            Mechanics, electricity, waves,
+            energy and modern physics.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 220 pages</span>
+            <span>⭐ 4.8</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 12 Physics')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 12 Physics')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 3 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 12"
+    data-subject="Chemistry"
+    data-search="grade 12 chemistry textbook organic chemistry reactions stoichiometry"
+>
+
+    <div class="book-cover">
+
+        🧪
+
+        <span class="book-grade">
+            GRADE 12
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Chemistry
+        </span>
+
+        <h3>
+            Grade 12 Chemistry
+        </h3>
+
+        <p>
+            Reactions, stoichiometry,
+            organic chemistry and more.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 230 pages</span>
+            <span>⭐ 4.9</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 12 Chemistry')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 12 Chemistry')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 4 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 12"
+    data-subject="Biology"
+    data-search="grade 12 biology textbook genetics ecology human biology"
+>
+
+    <div class="book-cover">
+
+        🧬
+
+        <span class="book-grade">
+            GRADE 12
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Biology
+        </span>
+
+        <h3>
+            Grade 12 Biology
+        </h3>
+
+        <p>
+            Genetics, ecology, evolution,
+            cells and human biology.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 260 pages</span>
+            <span>⭐ 4.9</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 12 Biology')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 12 Biology')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 5 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 11"
+    data-subject="Mathematics"
+    data-search="grade 11 mathematics algebra functions geometry"
+>
+
+    <div class="book-cover">
+        📊
+
+        <span class="book-grade">
+            GRADE 11
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Mathematics
+        </span>
+
+        <h3>
+            Grade 11 Mathematics
+        </h3>
+
+        <p>
+            Algebra, functions, geometry
+            and introductory calculus.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 210 pages</span>
+            <span>⭐ 4.7</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 11 Mathematics')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 11 Mathematics')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 6 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 11"
+    data-subject="Physics"
+    data-search="grade 11 physics mechanics heat waves"
+>
+
+    <div class="book-cover">
+        🔭
+
+        <span class="book-grade">
+            GRADE 11
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Physics
+        </span>
+
+        <h3>
+            Grade 11 Physics
+        </h3>
+
+        <p>
+            Motion, forces, heat,
+            waves and electricity.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 205 pages</span>
+            <span>⭐ 4.7</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 11 Physics')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 11 Physics')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 7 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 10"
+    data-subject="Biology"
+    data-search="grade 10 biology plants nutrition respiration genetics"
+>
+
+    <div class="book-cover">
+        🌿
+
+        <span class="book-grade">
+            GRADE 10
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Biology
+        </span>
+
+        <h3>
+            Grade 10 Biology
+        </h3>
+
+        <p>
+            Plants, nutrition, respiration,
+            microorganisms and ecology.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 190 pages</span>
+            <span>⭐ 4.8</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 10 Biology')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 10 Biology')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 8 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 10"
+    data-subject="Chemistry"
+    data-search="grade 10 chemistry atoms chemical reactions periodic table"
+>
+
+    <div class="book-cover">
+        ⚗️
+
+        <span class="book-grade">
+            GRADE 10
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Chemistry
+        </span>
+
+        <h3>
+            Grade 10 Chemistry
+        </h3>
+
+        <p>
+            Atoms, periodic table,
+            bonding and chemical reactions.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 180 pages</span>
+            <span>⭐ 4.7</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 10 Chemistry')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 10 Chemistry')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 9 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 9"
+    data-subject="Mathematics"
+    data-search="grade 9 mathematics algebra geometry statistics"
+>
+
+    <div class="book-cover">
+        ➗
+
+        <span class="book-grade">
+            GRADE 9
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Mathematics
+        </span>
+
+        <h3>
+            Grade 9 Mathematics
+        </h3>
+
+        <p>
+            Numbers, algebra, geometry,
+            statistics and equations.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 175 pages</span>
+            <span>⭐ 4.6</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 9 Mathematics')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 9 Mathematics')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 10 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 9"
+    data-subject="Physics"
+    data-search="grade 9 physics force motion energy heat"
+>
+
+    <div class="book-cover">
+        ⚙️
+
+        <span class="book-grade">
+            GRADE 9
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Physics
+        </span>
+
+        <h3>
+            Grade 9 Physics
+        </h3>
+
+        <p>
+            Motion, force, energy,
+            simple machines and heat.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 160 pages</span>
+            <span>⭐ 4.6</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 9 Physics')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 9 Physics')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 11 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 11"
+    data-subject="Chemistry"
+    data-search="grade 11 chemistry organic chemistry stoichiometry acids bases"
+>
+
+    <div class="book-cover">
+        🧫
+
+        <span class="book-grade">
+            GRADE 11
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Chemistry
+        </span>
+
+        <h3>
+            Grade 11 Chemistry
+        </h3>
+
+        <p>
+            Stoichiometry, acids, bases,
+            reactions and organic chemistry.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 215 pages</span>
+            <span>⭐ 4.8</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 11 Chemistry')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 11 Chemistry')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- BOOK 12 -->
+
+<div
+    class="book-card"
+    data-grade="Grade 10"
+    data-subject="Mathematics"
+    data-search="grade 10 mathematics functions quadratic equations trigonometry"
+>
+
+    <div class="book-cover">
+        📈
+
+        <span class="book-grade">
+            GRADE 10
+        </span>
+
+        <span class="book-type">
+            PDF
+        </span>
+    </div>
+
+    <div class="book-info">
+
+        <span class="subject">
+            Mathematics
+        </span>
+
+        <h3>
+            Grade 10 Mathematics
+        </h3>
+
+        <p>
+            Functions, quadratic equations,
+            trigonometry and statistics.
+        </p>
+
+        <div class="book-meta">
+            <span>📄 200 pages</span>
+            <span>⭐ 4.8</span>
+        </div>
+
+        <div class="book-buttons">
+
+            <button
+                class="book-btn read"
+                onclick="openBook('Grade 10 Mathematics')">
+                Read
+            </button>
+
+            <button
+                class="book-btn download"
+                onclick="downloadBook('Grade 10 Mathematics')">
+                ↓
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- EMPTY -->
+
+<div
+    class="empty"
+    id="empty"
+>
+
+    <div class="empty-icon">
+        🔍
+    </div>
+
+    <h3>
+        No resources found
+    </h3>
+
+    <p>
+        Try another search or category.
+    </p>
+
+</div>
+
+</main>
+
+</div>
+
+
+<!-- PDF MODAL -->
+
+<div
+    class="modal"
+    id="bookModal"
+>
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h3 id="modalTitle">
+                Book
+            </h3>
+
+            <button
+                class="close"
+                onclick="closeBook()">
+                ×
+            </button>
+
+        </div>
+
+        <div class="pdf-area">
+
+            <div>
+
+                <div style="font-size:65px">
+                    📚
+                </div>
+
+                <strong>
+                    PDF Reader
+                </strong>
+
+                <p>
+                    Connect your real PDF file
+                    here using an iframe or
+                    PDF viewer.
+                </p>
+
+                <br>
+
+                <p style="font-size:12px">
+                    Example:
+                    books/grade12-math.pdf
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+/* USER */
+
+const currentUser =
+    JSON.parse(
+        localStorage.getItem(
+            "schoolHubCurrentUser"
+        )
+    );
+
+if(!currentUser){
+
+    window.location.href =
+        "login.html";
+
+}
+
+if(currentUser){
+
+    const name =
+        currentUser.name ||
+        "Student";
+
+    document.getElementById(
+        "userName"
+    ).textContent = name;
+
+    document.getElementById(
+        "avatar"
+    ).textContent =
+        name
+        .split(" ")
+        .map(x=>x[0])
+        .join("")
+        .substring(0,2)
+        .toUpperCase();
+
+}
+
+
+/* FILTER */
+
+let currentFilter = "all";
+
+function filterBooks(
+    filter,
+    button
+){
+
+    currentFilter =
+        filter;
+
+    document
+        .querySelectorAll(
+            ".filter"
+        )
+        .forEach(
+            x =>
+            x.classList.remove(
+                "active"
+            )
+        );
+
+    button.classList.add(
+        "active"
+    );
+
+    applyFilters();
+
+}
+
+
+/* SEARCH */
+
+function searchBooks(){
+
+    applyFilters();
+
+}
+
+
+/* APPLY */
+
+function applyFilters(){
+
+    const search =
+        document
+        .getElementById(
+            "search"
+        )
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const cards =
+        document
+        .querySelectorAll(
+            ".book-card"
+        );
+
+
+    let visible = 0;
+
+
+    cards.forEach(
+        card => {
+
+            const grade =
+                card.dataset.grade;
+
+            const subject =
+                card.dataset.subject;
+
+            const text =
+                card.dataset.search
+                .toLowerCase();
+
+
+            const matchesFilter =
+                currentFilter === "all" ||
+                grade === currentFilter ||
+                subject === currentFilter;
+
+
+            const matchesSearch =
+                !search ||
+                text.includes(search);
+
+
+            if(
+                matchesFilter &&
+                matchesSearch
+            ){
+
+                card.style.display =
+                    "block";
+
+                visible++;
+
+            }else{
+
+                card.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "resultCount"
+    ).textContent =
+        `${visible} resources`;
+
+
+    document.getElementById(
+        "totalBooks"
+    ).textContent =
+        visible;
+
+
+    document.getElementById(
+        "empty"
+    ).style.display =
+        visible === 0
+        ? "block"
+        : "none";
+
+}
+
+
+/* OPEN BOOK */
+
+function openBook(title){
+
+    document.getElementById(
+        "modalTitle"
+    ).textContent =
+        title;
+
+    document.getElementById(
+        "bookModal"
+    ).style.display =
+        "flex";
+
+}
+
+
+/* CLOSE */
+
+function closeBook(){
+
+    document.getElementById(
+        "bookModal"
+    ).style.display =
+        "none";
+
+}
+
+
+document.getElementById(
+    "bookModal"
+).addEventListener(
+    "click",
+    function(e){
+
+        if(e.target === this){
+
+            closeBook();
+
+        }
+
+    }
+);
+
+
+/* DOWNLOAD COUNTER */
+
+function downloadBook(title){
+
+    let downloads =
+        Number(
+            localStorage.getItem(
+                "schoolHubDownloads"
+            )
+        ) || 0;
+
+
+    downloads++;
+
+
+    localStorage.setItem(
+        "schoolHubDownloads",
+        downloads
+    );
+
+
+    document.getElementById(
+        "downloads"
+    ).textContent =
+        downloads;
+
+
+    alert(
+        `"${title}" download started.`
+    );
+
+}
+
+
+/* LOAD DOWNLOADS */
+
+document.getElementById(
+    "downloads"
+).textContent =
+    localStorage.getItem(
+        "schoolHubDownloads"
+    ) || 0;
+
+
+/* SIDEBAR */
+
+function toggleSidebar(){
+
+    document
+        .getElementById(
+            "sidebar"
+        )
+        .classList
+        .toggle("open");
+
+}
+
+
+/* THEME */
+
+function toggleTheme(){
+
+    document.body
+        .classList
+        .toggle("dark");
+
+
+    const button =
+        document.getElementById(
+            "themeBtn"
+        );
+
+
+    if(
+        document.body.classList
+        .contains("dark")
+    ){
+
+        button.textContent =
+            "☀️";
+
+        localStorage.setItem(
+            "schoolHubTheme",
+            "dark"
+        );
+
+    }else{
+
+        button.textContent =
+            "🌙";
+
+        localStorage.setItem(
+            "schoolHubTheme",
+            "light"
+        );
+
+    }
+
+}
+
+
+/* LOAD THEME */
+
+if(
+    localStorage.getItem(
+        "schoolHubTheme"
+    ) === "dark"
+){
+
+    document.body.classList.add(
+        "dark"
+    );
+
+    document.getElementById(
+        "themeBtn"
+    ).textContent =
+        "☀️";
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+    if(
+        !confirm(
+            "Are you sure you want to logout?"
+        )
+    )
+        return;
+
+
+    localStorage.removeItem(
+        "schoolHubCurrentUser"
+    );
+
+
+    localStorage.removeItem(
+        "schoolHubRemember"
+    );
+
+
+    window.location.href =
+        "login.html";
+
+}
+
+</script>
+
+</body>
+</html>

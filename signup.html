@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Join | SCHOOL HUB Vs Amexo</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #7c3aed;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --danger: #dc2626;
+            --success: #16a34a;
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f8fafc;
+            --muted: #94a3b8;
+            --border: #334155;
+        }
+
+        body {
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at 10% 10%, #dbeafe 0, transparent 30%),
+                radial-gradient(circle at 90% 90%, #ede9fe 0, transparent 30%),
+                var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            transition: .3s;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            height: 72px;
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            height: 100%;
+            margin: auto;
+            padding: 0 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 800;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: white;
+            background: linear-gradient(
+                135deg,
+                var(--primary),
+                var(--secondary)
+            );
+        }
+
+        .logo-name span {
+            color: var(--primary);
+        }
+
+        .logo-name small {
+            display: block;
+            font-size: 9px;
+            color: var(--muted);
+            letter-spacing: .5px;
+        }
+
+        .home-link {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .home-link:hover {
+            color: var(--primary);
+        }
+
+        /* ================= MAIN ================= */
+
+        main {
+            flex: 1;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 50px 20px;
+        }
+
+        .signup-wrapper {
+            width: 100%;
+            max-width: 1050px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 25px;
+            overflow: hidden;
+
+            box-shadow: 0 25px 70px rgba(15, 23, 42, .12);
+        }
+
+        /* ================= LEFT ================= */
+
+        .signup-info {
+            padding: 55px;
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #1d4ed8,
+                    #6d28d9
+                );
+
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signup-info::before {
+            content: "";
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.08);
+
+            right: -100px;
+            top: -80px;
+        }
+
+        .signup-info::after {
+            content: "";
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,.07);
+
+            left: -70px;
+            bottom: -60px;
+        }
+
+        .info-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .info-badge {
+            display: inline-block;
+
+            padding: 8px 13px;
+
+            border: 1px solid rgba(255,255,255,.3);
+            border-radius: 30px;
+
+            font-size: 12px;
+            font-weight: 700;
+
+            margin-bottom: 25px;
+        }
+
+        .signup-info h1 {
+            font-size: 42px;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .signup-info > .info-content > p {
+            color: rgba(255,255,255,.82);
+            margin-bottom: 35px;
+        }
+
+        .benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .benefit {
+            display: flex;
+            gap: 13px;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            width: 35px;
+            height: 35px;
+
+            flex-shrink: 0;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: rgba(255,255,255,.14);
+        }
+
+        .benefit h3 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .benefit p {
+            font-size: 12px;
+            color: rgba(255,255,255,.7);
+        }
+
+        /* ================= FORM ================= */
+
+        .signup-form {
+            padding: 50px;
+        }
+
+        .form-heading {
+            margin-bottom: 28px;
+        }
+
+        .form-heading h2 {
+            font-size: 30px;
+            margin-bottom: 7px;
+        }
+
+        .form-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 17px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 7px;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 16px;
+            opacity: .7;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            height: 48px;
+
+            border: 1px solid var(--border);
+            border-radius: 10px;
+
+            background: var(--bg);
+            color: var(--text);
+
+            padding: 0 45px;
+
+            outline: none;
+
+            transition: .2s;
+        }
+
+        .form-group select {
+            padding-left: 14px;
+            cursor: pointer;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+        }
+
+        .password-toggle {
+            position: absolute;
+
+            right: 12px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+            background: transparent;
+
+            cursor: pointer;
+
+            color: var(--muted);
+        }
+
+        /* ================= PASSWORD STRENGTH ================= */
+
+        .password-strength {
+            margin-top: 7px;
+        }
+
+        .strength-bars {
+            display: flex;
+            gap: 4px;
+        }
+
+        .strength-bars span {
+            height: 4px;
+            flex: 1;
+
+            border-radius: 10px;
+
+            background: var(--border);
+        }
+
+        .strength-text {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* ================= CHECKBOX ================= */
+
+        .terms {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+
+            margin: 20px 0;
+        }
+
+        .terms input {
+            margin-top: 3px;
+            accent-color: var(--primary);
+        }
+
+        .terms label {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .terms a {
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .create-btn {
+            width: 100%;
+            height: 50px;
+
+            border: none;
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--secondary)
+                );
+
+            color: white;
+
+            font-size: 15px;
+            font-weight: 800;
+
+            cursor: pointer;
+
+            transition: .2s;
+        }
+
+        .create-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(37,99,235,.25);
+        }
+
+        .create-btn:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* ================= MESSAGE ================= */
+
+        .message {
+            display: none;
+
+            padding: 11px 13px;
+            border-radius: 9px;
+
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+        .message.error {
+            display: block;
+            color: var(--danger);
+            background: #fee2e2;
+        }
+
+        .message.success {
+            display: block;
+            color: var(--success);
+            background: #dcfce7;
+        }
+
+        /* ================= LOGIN ================= */
+
+        .login-text {
+            text-align: center;
+            margin-top: 20px;
+
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .login-text a {
+            color: var(--primary);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 20px;
+
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 800px) {
+
+            .signup-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .signup-info {
+                padding: 40px 30px;
+            }
+
+            .signup-info h1 {
+                font-size: 34px;
+            }
+
+            .signup-form {
+                padding: 35px 25px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            header {
+                height: 65px;
+            }
+
+            .navbar {
+                padding: 0 15px;
+            }
+
+            .logo-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            main {
+                padding: 25px 12px;
+            }
+
+            .signup-info {
+                padding: 30px 22px;
+            }
+
+            .signup-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <a href="index.html" class="logo">
+
+            <div class="logo-icon">
+                SH
+            </div>
+
+            <div class="logo-name">
+                SCHOOL <span>HUB</span>
+
+                <small>
+                    Vs Amexo
+                </small>
+            </div>
+
+        </a>
+
+        <a href="index.html" class="home-link">
+            ← Back to Home
+        </a>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= MAIN ================= -->
+
+<main>
+
+    <div class="signup-wrapper">
+
+        <!-- ================= LEFT ================= -->
+
+        <section class="signup-info">
+
+            <div class="info-content">
+
+                <div class="info-badge">
+                    🎓 SCHOOL HUB Vs Amexo
+                </div>
+
+                <h1>
+                    Start Your
+                    Learning Journey.
+                </h1>
+
+                <p>
+                    Create your student account and get access
+                    to powerful learning tools designed to help
+                    you achieve your academic goals.
+                </p>
+
+
+                <div class="benefits">
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            📚
+                        </div>
+
+                        <div>
+                            <h3>Learn Everything</h3>
+
+                            <p>
+                                Access organized courses and notes.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            📝
+                        </div>
+
+                        <div>
+                            <h3>Practice More</h3>
+
+                            <p>
+                                Test your knowledge with challenging questions.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            📊
+                        </div>
+
+                        <div>
+                            <h3>Track Progress</h3>
+
+                            <p>
+                                Monitor your academic performance.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="benefit">
+
+                        <div class="benefit-icon">
+                            🏆
+                        </div>
+
+                        <div>
+                            <h3>Achieve Your Goal</h3>
+
+                            <p>
+                                Prepare yourself for major examinations.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= FORM ================= -->
+
+        <section class="signup-form">
+
+            <div class="form-heading">
+
+                <h2>Create Account</h2>
+
+                <p>
+                    Join SCHOOL HUB Vs Amexo today.
+                </p>
+
+            </div>
+
+
+            <div id="message" class="message"></div>
+
+
+            <form id="signupForm">
+
+                <!-- FULL NAME -->
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            👤
+                        </span>
+
+                        <input
+                            type="text"
+                            id="name"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            ✉️
+                        </span>
+
+                        <input
+                            type="email"
+                            id="email"
+                            placeholder="example@email.com"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- GRADE -->
+
+                <div class="form-group">
+
+                    <label for="grade">
+                        Grade
+                    </label>
+
+                    <select id="grade" required>
+
+                        <option value="">
+                            Select your grade
+                        </option>
+
+                        <option value="9">
+                            Grade 9
+                        </option>
+
+                        <option value="10">
+                            Grade 10
+                        </option>
+
+                        <option value="11">
+                            Grade 11
+                        </option>
+
+                        <option value="12">
+                            Grade 12
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔒
+                        </span>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Create a strong password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('password', this)"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+
+                    <div class="password-strength">
+
+                        <div class="strength-bars">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+                        <div
+                            class="strength-text"
+                            id="strengthText"
+                        >
+                            Password strength
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-group">
+
+                    <label for="confirmPassword">
+                        Confirm Password
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <span class="input-icon">
+                            🔐
+                        </span>
+
+                        <input
+                            type="password"
+                            id="confirmPassword"
+                            placeholder="Confirm your password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            onclick="togglePassword('confirmPassword', this)"
+                        >
+                            👁
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <div class="terms">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <label for="terms">
+
+                        I agree to the
+                        <a href="#">
+                            Terms of Service
+                        </a>
+                        and
+                        <a href="#">
+                            Privacy Policy
+                        </a>.
+
+                    </label>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="create-btn"
+                    id="createBtn"
+                >
+                    Create My Account →
+                </button>
+
+            </form>
+
+
+            <div class="login-text">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login here
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    © 2026 SCHOOL HUB Vs Amexo.
+    Learn • Practice • Achieve.
+
+</footer>
+
+
+<script>
+
+    /* ================= PASSWORD VISIBILITY ================= */
+
+    function togglePassword(id, button) {
+
+        const input = document.getElementById(id);
+
+        if (input.type === "password") {
+
+            input.type = "text";
+            button.textContent = "🙈";
+
+        } else {
+
+            input.type = "password";
+            button.textContent = "👁";
+
+        }
+
+    }
+
+
+    /* ================= PASSWORD STRENGTH ================= */
+
+    const password = document.getElementById("password");
+
+    const strengthText =
+        document.getElementById("strengthText");
+
+    const bars =
+        document.querySelectorAll(".strength-bars span");
+
+
+    password.addEventListener("input", function () {
+
+        const value = password.value;
+
+        let strength = 0;
+
+        if (value.length >= 6)
+            strength++;
+
+        if (/[A-Z]/.test(value))
+            strength++;
+
+        if (/[0-9]/.test(value))
+            strength++;
+
+        if (/[^A-Za-z0-9]/.test(value))
+            strength++;
+
+
+        bars.forEach((bar, index) => {
+
+            bar.style.background =
+                index < strength
+                ? "var(--primary)"
+                : "var(--border)";
+
+        });
+
+
+        if (value.length === 0) {
+
+            strengthText.textContent =
+                "Password strength";
+
+        } else if (strength <= 1) {
+
+            strengthText.textContent =
+                "Weak password";
+
+        } else if (strength === 2) {
+
+            strengthText.textContent =
+                "Medium password";
+
+        } else if (strength === 3) {
+
+            strengthText.textContent =
+                "Strong password";
+
+        } else {
+
+            strengthText.textContent =
+                "Very strong password";
+
+        }
+
+    });
+
+
+    /* ================= SIGNUP ================= */
+
+    const form =
+        document.getElementById("signupForm");
+
+    const message =
+        document.getElementById("message");
+
+    form.addEventListener("submit", function (event) {
+
+        event.preventDefault();
+
+
+        const name =
+            document.getElementById("name").value.trim();
+
+        const email =
+            document.getElementById("email").value.trim();
+
+        const grade =
+            document.getElementById("grade").value;
+
+        const pass =
+            document.getElementById("password").value;
+
+        const confirm =
+            document.getElementById("confirmPassword").value;
+
+
+        /* PASSWORD MATCH */
+
+        if (pass !== confirm) {
+
+            showMessage(
+                "Passwords do not match.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* PASSWORD LENGTH */
+
+        if (pass.length < 6) {
+
+            showMessage(
+                "Password must contain at least 6 characters.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* GET EXISTING USERS */
+
+        const users =
+            JSON.parse(
+                localStorage.getItem("schoolHubUsers")
+            ) || [];
+
+
+        /* CHECK EMAIL */
+
+        const existingUser =
+            users.find(
+                user =>
+                user.email.toLowerCase() ===
+                email.toLowerCase()
+            );
+
+
+        if (existingUser) {
+
+            showMessage(
+                "An account with this email already exists.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        /* CREATE USER */
+
+        const newUser = {
+
+            id: Date.now(),
+
+            name: name,
+
+            email: email,
+
+            grade: grade,
+
+            password: pass,
+
+            createdAt:
+                new Date().toISOString(),
+
+            progress: 0,
+
+            coursesCompleted: 0,
+
+            questionsSolved: 0
+
+        };
+
+
+        users.push(newUser);
+
+
+        localStorage.setItem(
+            "schoolHubUsers",
+            JSON.stringify(users)
+        );
+
+
+        /* SAVE CURRENT USER */
+
+        localStorage.setItem(
+            "schoolHubCurrentUser",
+            JSON.stringify(newUser)
+        );
+
+
+        showMessage(
+            "Account created successfully! Redirecting...",
+            "success"
+        );
+
+
+        /* REDIRECT */
+
+        setTimeout(function () {
+
+            window.location.href =
+                "dashboard.html";
+
+        }, 1200);
+
+    });
+
+
+    /* ================= MESSAGE ================= */
+
+    function showMessage(text, type) {
+
+        message.textContent = text;
+
+        message.className =
+            "message " + type;
+
+    }
+
+</script>
+
+</body>
+</html>

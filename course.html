@@ -1,0 +1,2045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Course | SCHOOL HUB Vs Amexo</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+:root{
+    --primary:#2563eb;
+    --secondary:#7c3aed;
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --text:#0f172a;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --sidebar:#0f172a;
+    --success:#16a34a;
+}
+
+body.dark{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#f8fafc;
+    --muted:#94a3b8;
+    --border:#334155;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    transition:.3s;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+
+    width:250px;
+
+    background:var(--sidebar);
+    color:white;
+
+    padding:25px 18px;
+
+    z-index:1000;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding:0 8px 30px;
+}
+
+.brand-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    font-weight:800;
+}
+
+.brand-name{
+    font-weight:800;
+}
+
+.brand-name span{
+    color:#60a5fa;
+}
+
+.brand-name small{
+    display:block;
+    color:#94a3b8;
+    font-size:9px;
+}
+
+.menu-title{
+    color:#64748b;
+    font-size:10px;
+    font-weight:800;
+
+    padding:0 12px;
+
+    margin:15px 0 8px;
+
+    text-transform:uppercase;
+}
+
+.menu-item{
+    display:flex;
+    align-items:center;
+
+    gap:13px;
+
+    padding:12px;
+
+    margin:4px 0;
+
+    border-radius:9px;
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:600;
+
+    transition:.2s;
+}
+
+.menu-item:hover,
+.menu-item.active{
+    background:#1e3a8a;
+    color:white;
+}
+
+.menu-item span:first-child{
+    width:22px;
+    text-align:center;
+}
+
+.logout{
+    position:absolute;
+
+    bottom:20px;
+
+    left:18px;
+    right:18px;
+
+    border-top:1px solid #334155;
+
+    padding-top:15px;
+}
+
+.logout button{
+    width:100%;
+
+    border:none;
+    background:transparent;
+
+    color:#f87171;
+
+    cursor:pointer;
+
+    text-align:left;
+
+    padding:12px;
+
+    font-weight:700;
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:250px;
+    min-height:100vh;
+}
+
+/* ================= TOPBAR ================= */
+
+.topbar{
+    height:72px;
+
+    background:var(--card);
+
+    border-bottom:1px solid var(--border);
+
+    padding:0 30px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    position:sticky;
+    top:0;
+
+    z-index:500;
+}
+
+.mobile-menu{
+    display:none;
+
+    border:none;
+    background:transparent;
+
+    color:var(--text);
+
+    font-size:25px;
+
+    cursor:pointer;
+}
+
+.top-actions{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.theme-btn,
+.notification{
+    width:40px;
+    height:40px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    cursor:pointer;
+}
+
+.user-mini{
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+    padding-left:10px;
+}
+
+.avatar{
+    width:40px;
+    height:40px;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color:white;
+
+    font-weight:800;
+}
+
+.user-mini strong{
+    display:block;
+    font-size:13px;
+}
+
+.user-mini small{
+    color:var(--muted);
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    padding:30px;
+
+    max-width:1400px;
+
+    margin:auto;
+}
+
+/* ================= BREADCRUMB ================= */
+
+.breadcrumb{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    margin-bottom:20px;
+}
+
+.breadcrumb a{
+    color:var(--primary);
+
+    text-decoration:none;
+
+    font-weight:700;
+}
+
+/* ================= COURSE HERO ================= */
+
+.course-hero{
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary),
+            var(--secondary)
+        );
+
+    color:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:30px;
+
+    margin-bottom:25px;
+
+    overflow:hidden;
+
+    position:relative;
+}
+
+.course-hero::after{
+    content:"📚";
+
+    position:absolute;
+
+    right:35px;
+    bottom:-30px;
+
+    font-size:160px;
+
+    opacity:.08;
+}
+
+.hero-left{
+    position:relative;
+    z-index:2;
+}
+
+.subject-icon{
+    width:65px;
+    height:65px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.18);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:32px;
+
+    margin-bottom:18px;
+}
+
+.hero-left h1{
+    font-size:34px;
+
+    margin-bottom:8px;
+}
+
+.hero-left p{
+    color:#dbeafe;
+
+    max-width:650px;
+
+    line-height:1.6;
+
+    font-size:14px;
+}
+
+.hero-right{
+    position:relative;
+    z-index:2;
+
+    min-width:220px;
+}
+
+.progress-title{
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:12px;
+
+    margin-bottom:8px;
+}
+
+.hero-progress{
+    height:10px;
+
+    background:rgba(255,255,255,.2);
+
+    border-radius:20px;
+
+    overflow:hidden;
+}
+
+.hero-progress div{
+    height:100%;
+
+    width:68%;
+
+    background:white;
+
+    border-radius:20px;
+}
+
+.hero-right p{
+    margin-top:8px;
+
+    font-size:11px;
+
+    color:#dbeafe;
+
+    text-align:right;
+}
+
+/* ================= INFO CARDS ================= */
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+
+    margin-bottom:25px;
+}
+
+.info-card{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    padding:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+}
+
+.info-icon{
+    width:42px;
+    height:42px;
+
+    border-radius:11px;
+
+    background:#dbeafe;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.info-card strong{
+    display:block;
+
+    font-size:18px;
+
+    margin-bottom:3px;
+}
+
+.info-card span{
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+/* ================= MAIN GRID ================= */
+
+.course-layout{
+    display:grid;
+
+    grid-template-columns:
+        1.5fr .8fr;
+
+    gap:22px;
+}
+
+/* ================= UNITS ================= */
+
+.card{
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:23px;
+}
+
+.card-header{
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:20px;
+}
+
+.card-header h2{
+    font-size:19px;
+}
+
+.unit{
+    border:1px solid var(--border);
+
+    border-radius:13px;
+
+    margin-bottom:12px;
+
+    overflow:hidden;
+
+    transition:.2s;
+}
+
+.unit:hover{
+    border-color:#93c5fd;
+}
+
+.unit-top{
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    padding:16px;
+
+    cursor:pointer;
+}
+
+.unit-number{
+    width:38px;
+    height:38px;
+
+    border-radius:10px;
+
+    background:#dbeafe;
+
+    color:var(--primary);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-weight:900;
+
+    font-size:12px;
+}
+
+.unit-info{
+    flex:1;
+}
+
+.unit-info h3{
+    font-size:14px;
+
+    margin-bottom:4px;
+}
+
+.unit-info p{
+    color:var(--muted);
+
+    font-size:11px;
+}
+
+.unit-status{
+    font-size:11px;
+
+    color:var(--success);
+
+    font-weight:800;
+}
+
+.unit-arrow{
+    color:var(--muted);
+
+    transition:.2s;
+}
+
+.unit.open .unit-arrow{
+    transform:rotate(180deg);
+}
+
+.unit-content{
+    display:none;
+
+    border-top:1px solid var(--border);
+
+    padding:10px 16px 16px;
+}
+
+.unit.open .unit-content{
+    display:block;
+}
+
+.lesson{
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px;
+
+    border-radius:8px;
+
+    color:var(--text);
+
+    text-decoration:none;
+
+    font-size:12px;
+
+    transition:.2s;
+}
+
+.lesson:hover{
+    background:var(--bg);
+}
+
+.lesson-icon{
+    width:30px;
+    height:30px;
+
+    border-radius:8px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#f1f5f9;
+}
+
+.lesson-title{
+    flex:1;
+}
+
+.lesson small{
+    color:var(--muted);
+}
+
+/* ================= RIGHT SIDE ================= */
+
+.start-card{
+    background:
+        linear-gradient(
+            135deg,
+            #1d4ed8,
+            #6d28d9
+        );
+
+    color:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    margin-bottom:18px;
+}
+
+.start-card h2{
+    font-size:21px;
+
+    margin-bottom:8px;
+}
+
+.start-card p{
+    color:#dbeafe;
+
+    font-size:12px;
+
+    line-height:1.6;
+
+    margin-bottom:20px;
+}
+
+.start-btn{
+    display:block;
+
+    width:100%;
+
+    padding:13px;
+
+    background:white;
+
+    color:#1d4ed8;
+
+    text-align:center;
+
+    border-radius:9px;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:900;
+}
+
+.quick-card h2{
+    font-size:18px;
+
+    margin-bottom:15px;
+}
+
+.quick-item{
+    display:flex;
+
+    align-items:center;
+
+    gap:11px;
+
+    padding:12px 0;
+
+    border-bottom:1px solid var(--border);
+
+    text-decoration:none;
+
+    color:var(--text);
+}
+
+.quick-item:last-child{
+    border-bottom:none;
+}
+
+.quick-icon{
+    width:35px;
+    height:35px;
+
+    border-radius:9px;
+
+    background:#dbeafe;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.quick-item strong{
+    display:block;
+
+    font-size:12px;
+}
+
+.quick-item span{
+    display:block;
+
+    color:var(--muted);
+
+    font-size:10px;
+
+    margin-top:3px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1050px){
+
+    .info-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .course-layout{
+        grid-template-columns:1fr;
+    }
+
+}
+
+@media(max-width:800px){
+
+    .sidebar{
+        left:-250px;
+    }
+
+    .sidebar.open{
+        left:0;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    .mobile-menu{
+        display:block;
+    }
+
+    .topbar{
+        padding:0 18px;
+    }
+
+    .content{
+        padding:20px 15px;
+    }
+
+    .course-hero{
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        padding:25px;
+    }
+
+    .hero-right{
+        width:100%;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero-left h1{
+        font-size:27px;
+    }
+
+    .user-mini div{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            SH
+        </div>
+
+        <div class="brand-name">
+            SCHOOL <span>HUB</span>
+
+            <small>
+                Vs Amexo
+            </small>
+        </div>
+
+    </div>
+
+
+    <div class="menu-title">
+        Main Menu
+    </div>
+
+    <a href="dashboard.html" class="menu-item">
+        <span>🏠</span>
+        Dashboard
+    </a>
+
+    <a href="courses.html" class="menu-item active">
+        <span>📚</span>
+        My Courses
+    </a>
+
+    <a href="practice.html" class="menu-item">
+        <span>📝</span>
+        Practice
+    </a>
+
+    <a href="notes.html" class="menu-item">
+        <span>📖</span>
+        Notes
+    </a>
+
+
+    <div class="menu-title">
+        Resources
+    </div>
+
+    <a href="library.html" class="menu-item">
+        <span>📄</span>
+        Digital Library
+    </a>
+
+    <a href="entrance.html" class="menu-item">
+        <span>🎯</span>
+        Entrance Exam
+    </a>
+
+    <a href="#" class="menu-item">
+        <span>🏆</span>
+        Leaderboard
+    </a>
+
+
+    <div class="menu-title">
+        Account
+    </div>
+
+    <a href="#" class="menu-item">
+        <span>⚙️</span>
+        Settings
+    </a>
+
+
+    <div class="logout">
+
+        <button onclick="logout()">
+            🚪 &nbsp; Logout
+        </button>
+
+    </div>
+
+</aside>
+
+
+<!-- ================= MAIN ================= -->
+
+<div class="main">
+
+<header class="topbar">
+
+    <button
+        class="mobile-menu"
+        onclick="toggleSidebar()"
+    >
+        ☰
+    </button>
+
+    <div></div>
+
+    <div class="top-actions">
+
+        <button
+            class="theme-btn"
+            id="themeBtn"
+            onclick="toggleTheme()"
+        >
+            🌙
+        </button>
+
+        <button class="notification">
+            🔔
+        </button>
+
+        <div class="user-mini">
+
+            <div class="avatar" id="avatar">
+                S
+            </div>
+
+            <div>
+
+                <strong id="userName">
+                    Student
+                </strong>
+
+                <small>
+                    Student
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<main class="content">
+
+<!-- ================= BREADCRUMB ================= -->
+
+<div class="breadcrumb">
+
+    <a href="dashboard.html">
+        Dashboard
+    </a>
+
+    <span>›</span>
+
+    <a href="courses.html">
+        Courses
+    </a>
+
+    <span>›</span>
+
+    <span id="breadcrumbSubject">
+        Course
+    </span>
+
+</div>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="course-hero">
+
+    <div class="hero-left">
+
+        <div class="subject-icon" id="subjectIcon">
+            📚
+        </div>
+
+        <h1 id="subjectTitle">
+            Mathematics
+        </h1>
+
+        <p id="subjectDescription">
+            Master the concepts, solve challenging
+            problems and prepare yourself for
+            Ethiopian entrance examinations.
+        </p>
+
+    </div>
+
+
+    <div class="hero-right">
+
+        <div class="progress-title">
+
+            <span>
+                Course Progress
+            </span>
+
+            <strong id="progressText">
+                68%
+            </strong>
+
+        </div>
+
+        <div class="hero-progress">
+
+            <div id="heroProgress"></div>
+
+        </div>
+
+        <p>
+            Keep learning to complete this course.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= INFO ================= -->
+
+<section class="info-grid">
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            📚
+        </div>
+
+        <div>
+
+            <strong id="unitCount">
+                12
+            </strong>
+
+            <span>
+                Units
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            🎬
+        </div>
+
+        <div>
+
+            <strong>
+                80+
+            </strong>
+
+            <span>
+                Lessons
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            📝
+        </div>
+
+        <div>
+
+            <strong>
+                250+
+            </strong>
+
+            <span>
+                Questions
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <div class="info-card">
+
+        <div class="info-icon">
+            🏆
+        </div>
+
+        <div>
+
+            <strong>
+                Certificate
+            </strong>
+
+            <span>
+                On completion
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= COURSE LAYOUT ================= -->
+
+<section class="course-layout">
+
+
+<!-- ================= UNITS ================= -->
+
+<div class="card">
+
+    <div class="card-header">
+
+        <h2>
+            Course Curriculum
+        </h2>
+
+        <span style="
+            color:var(--muted);
+            font-size:11px;
+        ">
+            Select a unit
+        </span>
+
+    </div>
+
+
+    <!-- UNIT 1 -->
+
+    <div class="unit open">
+
+        <div
+            class="unit-top"
+            onclick="toggleUnit(this)"
+        >
+
+            <div class="unit-number">
+                01
+            </div>
+
+            <div class="unit-info">
+
+                <h3 id="unit1Title">
+                    Fundamentals
+                </h3>
+
+                <p>
+                    Concepts & introduction
+                </p>
+
+            </div>
+
+            <div class="unit-status">
+                ✓
+            </div>
+
+            <div class="unit-arrow">
+                ▼
+            </div>
+
+        </div>
+
+
+        <div class="unit-content">
+
+            <a
+                href="#"
+                class="lesson"
+            >
+
+                <div class="lesson-icon">
+                    📖
+                </div>
+
+                <div class="lesson-title">
+
+                    Introduction
+
+                    <small>
+                        Lesson
+                    </small>
+
+                </div>
+
+                <span>
+                    ✓
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="lesson"
+            >
+
+                <div class="lesson-icon">
+                    🎬
+                </div>
+
+                <div class="lesson-title">
+
+                    Concept Explanation
+
+                    <small>
+                        Video
+                    </small>
+
+                </div>
+
+                <span>
+                    ▶
+                </span>
+
+            </a>
+
+
+            <a
+                href="#"
+                class="lesson"
+            >
+
+                <div class="lesson-icon">
+                    📝
+                </div>
+
+                <div class="lesson-title">
+
+                    Practice Questions
+
+                    <small>
+                        20 Questions
+                    </small>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- UNIT 2 -->
+
+    <div class="unit">
+
+        <div
+            class="unit-top"
+            onclick="toggleUnit(this)"
+        >
+
+            <div class="unit-number">
+                02
+            </div>
+
+            <div class="unit-info">
+
+                <h3>
+                    Core Concepts
+                </h3>
+
+                <p>
+                    Essential knowledge
+                </p>
+
+            </div>
+
+            <div class="unit-status">
+                35%
+            </div>
+
+            <div class="unit-arrow">
+                ▼
+            </div>
+
+        </div>
+
+
+        <div class="unit-content">
+
+            <a href="#" class="lesson">
+
+                <div class="lesson-icon">
+                    📖
+                </div>
+
+                <div class="lesson-title">
+
+                    Lesson 1
+
+                    <small>
+                        Note
+                    </small>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+
+            <a href="#" class="lesson">
+
+                <div class="lesson-icon">
+                    📝
+                </div>
+
+                <div class="lesson-title">
+
+                    Practice
+
+                    <small>
+                        20 Questions
+                    </small>
+
+                </div>
+
+                <span>
+                    →
+                </span>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- UNIT 3 -->
+
+    <div class="unit">
+
+        <div
+            class="unit-top"
+            onclick="toggleUnit(this)"
+        >
+
+            <div class="unit-number">
+                03
+            </div>
+
+            <div class="unit-info">
+
+                <h3>
+                    Advanced Topics
+                </h3>
+
+                <p>
+                    Higher-level concepts
+                </p>
+
+            </div>
+
+            <div class="unit-status">
+                🔒
+            </div>
+
+            <div class="unit-arrow">
+                ▼
+            </div>
+
+        </div>
+
+
+        <div class="unit-content">
+
+            <a href="#" class="lesson">
+
+                <div class="lesson-icon">
+                    🔒
+                </div>
+
+                <div class="lesson-title">
+
+                    Advanced Lesson
+
+                    <small>
+                        Locked
+                    </small>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- UNIT 4 -->
+
+    <div class="unit">
+
+        <div
+            class="unit-top"
+            onclick="toggleUnit(this)"
+        >
+
+            <div class="unit-number">
+                04
+            </div>
+
+            <div class="unit-info">
+
+                <h3>
+                    Problem Solving
+                </h3>
+
+                <p>
+                    Exam-style problems
+                </p>
+
+            </div>
+
+            <div class="unit-status">
+                🔒
+            </div>
+
+            <div class="unit-arrow">
+                ▼
+            </div>
+
+        </div>
+
+
+        <div class="unit-content">
+
+            <a href="#" class="lesson">
+
+                <div class="lesson-icon">
+                    🎯
+                </div>
+
+                <div class="lesson-title">
+
+                    Exam Questions
+
+                    <small>
+                        Entrance Style
+                    </small>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- UNIT 5 -->
+
+    <div class="unit">
+
+        <div
+            class="unit-top"
+            onclick="toggleUnit(this)"
+        >
+
+            <div class="unit-number">
+                05
+            </div>
+
+            <div class="unit-info">
+
+                <h3>
+                    Revision
+                </h3>
+
+                <p>
+                    Review important concepts
+                </p>
+
+            </div>
+
+            <div class="unit-status">
+                🔒
+            </div>
+
+            <div class="unit-arrow">
+                ▼
+            </div>
+
+        </div>
+
+
+        <div class="unit-content">
+
+            <a href="#" class="lesson">
+
+                <div class="lesson-icon">
+                    🔄
+                </div>
+
+                <div class="lesson-title">
+
+                    Full Revision
+
+                    <small>
+                        Review
+                    </small>
+
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= RIGHT ================= -->
+
+<div>
+
+    <div class="start-card">
+
+        <h2>
+            Ready to learn?
+        </h2>
+
+        <p>
+            Continue from where you stopped
+            and improve your knowledge step
+            by step.
+        </p>
+
+        <a
+            href="#"
+            class="start-btn"
+            onclick="startLearning(event)"
+        >
+            ▶ Start Learning
+        </a>
+
+    </div>
+
+
+    <div class="card quick-card">
+
+        <h2>
+            Quick Resources
+        </h2>
+
+
+        <a href="notes.html" class="quick-item">
+
+            <div class="quick-icon">
+                📖
+            </div>
+
+            <div>
+
+                <strong>
+                    Course Notes
+                </strong>
+
+                <span>
+                    Read study materials
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <a href="practice.html" class="quick-item">
+
+            <div class="quick-icon">
+                📝
+            </div>
+
+            <div>
+
+                <strong>
+                    Practice Questions
+                </strong>
+
+                <span>
+                    Test your knowledge
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <a href="library.html" class="quick-item">
+
+            <div class="quick-icon">
+                📚
+            </div>
+
+            <div>
+
+                <strong>
+                    Digital Library
+                </strong>
+
+                <span>
+                    Books and PDFs
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <a href="entrance.html" class="quick-item">
+
+            <div class="quick-icon">
+                🎯
+            </div>
+
+            <div>
+
+                <strong>
+                    Entrance Exam
+                </strong>
+
+                <span>
+                    Challenge yourself
+                </span>
+
+            </div>
+
+        </a>
+
+    </div>
+
+</div>
+
+</section>
+
+</main>
+
+</div>
+
+
+<script>
+
+/* ================= LOGIN CHECK ================= */
+
+const currentUser =
+    JSON.parse(
+        localStorage.getItem(
+            "schoolHubCurrentUser"
+        )
+    );
+
+if(!currentUser){
+
+    window.location.href =
+        "login.html";
+
+}
+
+
+/* ================= USER ================= */
+
+if(currentUser){
+
+    const name =
+        currentUser.name || "Student";
+
+
+    document.getElementById(
+        "userName"
+    ).textContent = name;
+
+
+    const initials =
+        name
+        .split(" ")
+        .map(
+            word =>
+            word.charAt(0)
+        )
+        .join("")
+        .substring(0,2)
+        .toUpperCase();
+
+
+    document.getElementById(
+        "avatar"
+    ).textContent =
+        initials;
+
+}
+
+
+/* ================= SUBJECT DATA ================= */
+
+const subjects = {
+
+    mathematics:{
+        title:"Mathematics",
+        icon:"🧮",
+        description:
+        "Master algebra, functions, geometry, logarithms, trigonometry, statistics and advanced entrance-exam mathematics.",
+        progress:72,
+        units:12
+    },
+
+    physics:{
+        title:"Physics",
+        icon:"⚛️",
+        description:
+        "Learn mechanics, energy, heat, waves, electricity, magnetism and modern physics through concepts and problem solving.",
+        progress:58,
+        units:11
+    },
+
+    chemistry:{
+        title:"Chemistry",
+        icon:"🧪",
+        description:
+        "Study atomic structure, periodic trends, chemical bonding, reactions, stoichiometry, acids, bases and organic chemistry.",
+        progress:81,
+        units:12
+    },
+
+    biology:{
+        title:"Biology",
+        icon:"🌿",
+        description:
+        "Explore cells, nutrition, genetics, evolution, ecology, human biology and biodiversity with exam-focused practice.",
+        progress:64,
+        units:12
+    },
+
+    english:{
+        title:"English",
+        icon:"🇬🇧",
+        description:
+        "Improve grammar, vocabulary, reading comprehension, writing and examination skills.",
+        progress:35,
+        units:10
+    }
+
+};
+
+
+/* ================= GET SUBJECT ================= */
+
+const params =
+    new URLSearchParams(
+        window.location.search
+    );
+
+const subject =
+    params.get("subject")
+    || "mathematics";
+
+
+const data =
+    subjects[subject]
+    || subjects.mathematics;
+
+
+/* ================= UPDATE PAGE ================= */
+
+document.title =
+    data.title +
+    " | SCHOOL HUB Vs Amexo";
+
+
+document.getElementById(
+    "subjectTitle"
+).textContent =
+    data.title;
+
+
+document.getElementById(
+    "breadcrumbSubject"
+).textContent =
+    data.title;
+
+
+document.getElementById(
+    "subjectIcon"
+).textContent =
+    data.icon;
+
+
+document.getElementById(
+    "subjectDescription"
+).textContent =
+    data.description;
+
+
+document.getElementById(
+    "progressText"
+).textContent =
+    data.progress + "%";
+
+
+document.getElementById(
+    "heroProgress"
+).style.width =
+    data.progress + "%";
+
+
+document.getElementById(
+    "unitCount"
+).textContent =
+    data.units;
+
+
+/* ================= UNIT TOGGLE ================= */
+
+function toggleUnit(element){
+
+    const unit =
+        element.parentElement;
+
+    unit.classList.toggle(
+        "open"
+    );
+
+}
+
+
+/* ================= START LEARNING ================= */
+
+function startLearning(event){
+
+    event.preventDefault();
+
+    const firstLesson =
+        document.querySelector(
+            ".lesson"
+        );
+
+    if(firstLesson){
+
+        firstLesson.scrollIntoView({
+            behavior:"smooth",
+            block:"center"
+        });
+
+        firstLesson.style.background =
+            "var(--bg)";
+
+        setTimeout(
+            function(){
+
+                firstLesson.style.background =
+                    "";
+
+            },
+            1200
+        );
+
+    }
+
+}
+
+
+/* ================= SIDEBAR ================= */
+
+function toggleSidebar(){
+
+    document
+        .getElementById("sidebar")
+        .classList
+        .toggle("open");
+
+}
+
+
+/* ================= DARK MODE ================= */
+
+function toggleTheme(){
+
+    document.body
+        .classList
+        .toggle("dark");
+
+
+    const button =
+        document.getElementById(
+            "themeBtn"
+        );
+
+
+    if(
+        document.body
+        .classList
+        .contains("dark")
+    ){
+
+        button.textContent =
+            "☀️";
+
+        localStorage.setItem(
+            "schoolHubTheme",
+            "dark"
+        );
+
+    }else{
+
+        button.textContent =
+            "🌙";
+
+        localStorage.setItem(
+            "schoolHubTheme",
+            "light"
+        );
+
+    }
+
+}
+
+
+/* ================= LOAD THEME ================= */
+
+if(
+    localStorage.getItem(
+        "schoolHubTheme"
+    ) === "dark"
+){
+
+    document.body
+        .classList
+        .add("dark");
+
+    document.getElementById(
+        "themeBtn"
+    ).textContent =
+        "☀️";
+
+}
+
+
+/* ================= LOGOUT ================= */
+
+function logout(){
+
+    if(
+        !confirm(
+            "Are you sure you want to logout?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    localStorage.removeItem(
+        "schoolHubCurrentUser"
+    );
+
+    localStorage.removeItem(
+        "schoolHubRemember"
+    );
+
+    window.location.href =
+        "login.html";
+
+}
+
+</script>
+
+</body>
+</html>
